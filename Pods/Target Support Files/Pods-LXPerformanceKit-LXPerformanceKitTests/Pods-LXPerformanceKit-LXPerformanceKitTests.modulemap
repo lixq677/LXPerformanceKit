@@ -1,0 +1,6 @@
+framework module Pods_LXPerformanceKit_LXPerformanceKitTests {
+  umbrella header "Pods-LXPerformanceKit-LXPerformanceKitTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

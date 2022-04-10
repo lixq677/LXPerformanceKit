@@ -1,0 +1,6 @@
+framework module CXLogKit {
+  umbrella header "CXLogKit-umbrella.h"
+
+  export *
+  module * { export * }
+}
