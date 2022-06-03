@@ -42,6 +42,16 @@ FOUNDATION_EXPORT void cx_logger_appender_flush_sync(void);
 FOUNDATION_EXPORT void cx_logger_appender_close(void);
 
 
+/// 设置日志默认缓存多少天，默认是10天，最少时间是1天，单位 秒, 1天:24*60*60
+/// @param max_time <#max_time description#>
+FOUNDATION_EXPORT void cx_logger_appender_set_max_alive_duration(long max_time);
+
+
+/// 设置单个文件大小
+/// @param max_byte_size <#max_byte_size description#>
+FOUNDATION_EXPORT void cx_logger_appender_set_max_file_size(uint64_t max_byte_size);
+
+
 /// 设置日志模式
 /// @param mode <#mode description#>
 FOUNDATION_EXPORT void cx_logger_appender_setmode(CXAppenderMode mode);

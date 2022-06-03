@@ -55,6 +55,14 @@ FOUNDATION_EXPORT void cx_logger_appender_set_console_log(bool is_open){
     appender_set_console_log(is_open);
 }
 
+FOUNDATION_EXPORT void cx_logger_appender_set_max_alive_duration(long max_time){
+     appender_set_max_alive_duration(max_time);
+}
+
+FOUNDATION_EXPORT void cx_logger_appender_set_max_file_size(uint64_t max_byte_size){
+    appender_set_max_file_size(max_byte_size);
+}
+
 FOUNDATION_EXPORT NSArray<NSString*> *cx_logger_appender_getfilepath_from_timespan(int timespan, const char* prefix){
     std::vector<std::string> strVec(2);
     bool success = appender_getfilepath_from_timespan(timespan, prefix, strVec);

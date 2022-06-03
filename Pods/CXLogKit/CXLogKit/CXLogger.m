@@ -28,6 +28,14 @@
     cx_logger_SetLevel(level);
 }
 
++ (void)setCacheDuration:(long)duration{
+    cx_logger_appender_set_max_alive_duration(duration);
+}
+
++ (void)setFileMaxSize:(uint64_t)maxByteSize{
+    cx_logger_appender_set_max_file_size(maxByteSize);
+}
+
 + (int)isEnabledForLevel:(CXLogLevel)level{
     return cx_logger_IsEnabledFor(level);
 }

@@ -29,6 +29,16 @@ NS_ASSUME_NONNULL_BEGIN
 /// @param level <#level description#>
 + (void)setLevel:(CXLogLevel)level;
 
+
+/// 设置单个文件缓存时间,默认10天，最小1天
+/// @param duration 时间，单位 秒
++ (void)setCacheDuration:(long)duration;
+
+
+/// 设置单个文件最大是多小
+/// @param maxByteSize <#maxByteSize description#>
++ (void)setFileMaxSize:(uint64_t)maxByteSize;
+
 + (int)isEnabledForLevel:(CXLogLevel)level;
 
 
