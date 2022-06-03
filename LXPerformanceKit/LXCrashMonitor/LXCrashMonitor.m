@@ -32,7 +32,7 @@ LXCrash_EntryContext g_crashContext;
 
 static volatile sig_atomic_t g_installed = 0;
 
-NSArray *genCrashStack(){
+NSArray *genCrashStack(void){
     if (g_crashContext.stackTraceLength>0) {
         
         char **strings = backtrace_symbols((void *)g_crashContext.stackTrace, (int)g_crashContext.stackTraceLength);

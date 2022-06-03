@@ -42,6 +42,7 @@ TODO: Add long description of the pod here.
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
    s.dependency  "YYModel"
+   s.dependency  "libextobjc"
     
    s.subspec 'LXTools' do |aa|
         aa.source_files = "LXPerformanceKit/LXTools/*.{h,m}","LXPerformanceKit/LXTools/**/*.{h,m}"

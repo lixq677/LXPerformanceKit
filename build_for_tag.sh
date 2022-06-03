@@ -57,7 +57,6 @@ fi
 echo "上传成功"
 
 pod spec lint --allow-warnings --sources="http://git.bngrp.com/retailer-newapp/BNIosProjects/BNSpecs/bnspec.git,https://github.com/CocoaPods/Specs.git"
-git push --tags
 if [ $? -ne 0 ]; then
     echo "远程验证失败"
     exit
