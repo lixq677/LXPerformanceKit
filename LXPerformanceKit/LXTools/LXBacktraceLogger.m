@@ -71,11 +71,11 @@ typedef struct LXStackFrameEntry{
 
 static mach_port_t main_thread_id;
 
-@implementation LXBacktraceLogger
-
-+ (void)load {
+__attribute__((constructor)) static void CrashMonitor_Initializer(void){
     main_thread_id = mach_thread_self();
 }
+
+@implementation LXBacktraceLogger
 
 #pragma -mark Implementation of interface
 + (NSString *)backtraceOfNSThread:(NSThread *)thread {
