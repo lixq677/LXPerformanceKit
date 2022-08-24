@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <libkern/OSAtomic.h>
 #import <execinfo.h>
-#import "LXBacktraceLogger.h"
+#import "LXBacktrace.h"
 #import <YYCache/YYCache.h>
 #import <libextobjc/extobjc.h>
 
@@ -80,12 +80,12 @@
                     if (++self->_timeoutCount >= 5) {//超过5*60=300毫秒就认为是卡顿
                         if (lagInfo == nil) {
                             lagInfo = [[LXLag alloc] init];
-                            NSMutableArray *stacks = [NSMutableArray arrayWithArray:lx_baseAddressInfo()];
-                            NSString *mainThreadStack = [LXBacktraceLogger backtraceOfMainThread];
+                            NSMutableArray *stacks = [NSMutableArray arrayWithArray:[LXBacktrace baseAddressInfo]];
+                            NSString *mainThreadStack = [LXBacktrace backtraceMainThread];
                             if (mainThreadStack) {
                                 [stacks addObject:mainThreadStack];
                             }
-                            NSString *currentThreadStack = [LXBacktraceLogger backtraceOfCurrentThread];
+                            NSString *currentThreadStack = [LXBacktrace backtraceCurrentThread];
                             if (currentThreadStack) {
                                 [stacks addObject:currentThreadStack];
                             }

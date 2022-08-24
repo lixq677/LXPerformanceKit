@@ -13,7 +13,7 @@
 #include "LXMach.h"
 #include <mach-o/dyld.h>
 #import <execinfo.h>
-#import "LXBacktraceLogger.h"
+#import "LXBacktrace.h"
 #import "LXCrash_UserException.h"
 
 @interface LXCrashMonitor ()
@@ -38,7 +38,7 @@ NSArray *genCrashStack(void){
         char **strings = backtrace_symbols((void *)g_crashContext.stackTrace, (int)g_crashContext.stackTraceLength);
         NSMutableArray *ret = [NSMutableArray arrayWithCapacity:g_crashContext.stackTraceLength];
         
-        [ret addObjectsFromArray:lx_baseAddressInfo()];
+        [ret addObjectsFromArray:[LXBacktrace baseAddressInfo]];
         
         for (int i = 0; i < g_crashContext.stackTraceLength; ++i)
             [ret addObject:@(strings[i])];
@@ -71,12 +71,12 @@ void lxcrash_onCrash(void){
             sprintf(symbol,"App crashed due to signal: [%s, %s] at %0lx",
                             sigName, sigCodeName, g_crashContext.faultAddress);
             
-            NSMutableArray *stacks = [NSMutableArray arrayWithArray:lx_baseAddressInfo()];
-            NSString *mainThreadStack = [LXBacktraceLogger backtraceOfMainThread];
+            NSMutableArray *stacks = [NSMutableArray arrayWithArray:[LXBacktrace baseAddressInfo]];
+            NSString *mainThreadStack = [LXBacktrace backtraceMainThread];
             if (mainThreadStack) {
                 [stacks addObject:mainThreadStack];
             }
-            NSString *currentThreadStack = [LXBacktraceLogger backtraceOfCurrentThread];
+            NSString *currentThreadStack = [LXBacktrace backtraceCurrentThread];
             if (currentThreadStack) {
                 [stacks addObject:currentThreadStack];
             }
@@ -95,12 +95,12 @@ void lxcrash_onCrash(void){
             sprintf(symbol,"App crashed due to mach exception: [%s: %s] at %0lx",
                             machExceptionName, machCodeName, g_crashContext.faultAddress);
             
-            NSMutableArray *stacks = [NSMutableArray arrayWithArray:lx_baseAddressInfo()];
-            NSString *mainThreadStack = [LXBacktraceLogger backtraceOfMainThread];
+            NSMutableArray *stacks = [NSMutableArray arrayWithArray:[LXBacktrace baseAddressInfo]];
+            NSString *mainThreadStack = [LXBacktrace backtraceMainThread];
             if (mainThreadStack) {
                 [stacks addObject:mainThreadStack];
             }
-            NSString *currentThreadStack = [LXBacktraceLogger backtraceOfCurrentThread];
+            NSString *currentThreadStack = [LXBacktrace backtraceCurrentThread];
             if (currentThreadStack) {
                 [stacks addObject:currentThreadStack];
             }
@@ -119,7 +119,7 @@ void lxcrash_onCrash(void){
         case LXCrashTypeMainThreadDeadLock:{
             crashInfo = [[LXCrash alloc] initWithName:@"MainThreadDeadLock" reason:@"Main thread deadlocked"];
             
-            crashInfo.stack = [LXBacktraceLogger backtraceOfMainThread];
+            crashInfo.stack = [LXBacktrace backtraceMainThread];
             
             crashInfo.crashType = @"DeadLockException";
         }

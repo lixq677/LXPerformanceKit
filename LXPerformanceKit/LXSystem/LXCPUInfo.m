@@ -122,7 +122,7 @@
     }
 }
 
-- (float)usage{
++ (float)usage{
     kern_return_t kr;
     thread_array_t         thread_list;
     mach_msg_type_number_t thread_count;
@@ -159,6 +159,37 @@
     assert(kr == KERN_SUCCESS);
     
     return total_cpu;
+}
+
++ (NSDictionary<NSNumber *,NSNumber *> *)cpuThreadUsage{
+    kern_return_t kr;
+    thread_array_t         thread_list;
+    mach_msg_type_number_t thread_count;
+    
+    thread_info_data_t     thinfo;
+    mach_msg_type_number_t thread_info_count;
+    thread_basic_info_t basic_info_th;
+    
+    // get threads in the task
+    kr = task_threads(mach_task_self(), &thread_list, &thread_count);
+    if (kr != KERN_SUCCESS) {
+        return nil;
+    }
+    NSMutableDictionary<NSNumber *,NSNumber *> *cpuThreadUsageDictionary = [NSMutableDictionary dictionary];
+    for (int j = 0; j < thread_count; j++){
+        thread_info_count = THREAD_INFO_MAX;
+        kr = thread_info(thread_list[j], THREAD_BASIC_INFO, (thread_info_t)thinfo, &thread_info_count);
+        if (kr != KERN_SUCCESS) {
+            return cpuThreadUsageDictionary;
+        }
+        basic_info_th = (thread_basic_info_t)thinfo;
+        if (!(basic_info_th->flags & TH_FLAGS_IDLE)) {
+            cpuThreadUsageDictionary[@(thread_list[j])] = @(basic_info_th->cpu_usage / (float)TH_USAGE_SCALE);
+        }
+    }
+    kr = vm_deallocate(mach_task_self(), (vm_offset_t)thread_list, thread_count * sizeof(thread_t));
+    assert(kr == KERN_SUCCESS);
+    return cpuThreadUsageDictionary;
 }
 
 

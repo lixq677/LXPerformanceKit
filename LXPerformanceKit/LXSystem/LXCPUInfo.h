@@ -23,8 +23,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy)   NSString     *endianess;
 
 //当前使用百分比
-- (float)usage;
++ (float)usage;
 
+//key: 线程号，value: cpu使用率
++ (NSDictionary<NSNumber *, NSNumber *> *)cpuThreadUsage;
 
 @end
 

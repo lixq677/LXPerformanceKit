@@ -9,7 +9,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'LXPerformanceKit'
-  s.version          = '0.0.3'
+  s.version          = '0.0.4'
   s.summary          = 'A short description of LXPerformanceKit.'
 
 # This description is used to generate tags and improve search results.
@@ -70,6 +70,33 @@ TODO: Add long description of the pod here.
         ee.dependency  "LXPerformanceKit/LXSystem"
         ee.dependency  "LXPerformanceKit/LXTools"
         ee.dependency 'YYCache'
+    end
+    
+    s.subspec 'LXGPUMonitor' do |ff|
+        ff.source_files = "LXPerformanceKit/LXGPUMonitor/*.{h,m,mm,c}","LXPerformanceKit/LXGPUMonitor/**/*.{h,m,mm,c}"
+        ff.framework = 'IOKit'
+    end
+    
+    s.subspec 'LXFPSMonitor' do |gg|
+        gg.source_files = "LXPerformanceKit/LXFPSMonitor/*.{h,m,mm,c}","LXPerformanceKit/LXFPSMonitor/**/*.{h,m,mm,c}"
+        gg.framework = 'UIKit'
+    end
+    s.subspec 'LXMEMMonitor' do |hh|
+        hh.source_files = "LXPerformanceKit/LXMEMMonitor/*.{h,m,mm,c}","LXPerformanceKit/LXMEMMonitor/**/*.{h,m,mm,c}"
+        hh.dependency  "LXPerformanceKit/LXSystem"
+        hh.dependency  "LXPerformanceKit/LXTools"
+    end
+    s.subspec 'LXUIMonitor' do |jj|
+        jj.source_files = "LXPerformanceKit/LXUIMonitor/*.{h,m,mm,c}","LXPerformanceKit/LXUIMonitor/**/*.{h,m,mm,c}"
+        jj.resources = "LXPerformanceKit/LXUIMonitor/*.xcassets","LXPerformanceKit/LXUIMonitor/*.png"
+        jj.dependency  "LXPerformanceKit/LXSystem"
+        jj.dependency  "LXPerformanceKit/LXGPUMonitor"
+        jj.dependency  "LXPerformanceKit/LXFPSMonitor"
+        jj.dependency  "LXPerformanceKit/LXMEMMonitor"
+        jj.dependency  "LXPerformanceKit/LXCPUMonitor"
+        jj.dependency  "LXPerformanceKit/LXTools"
+        jj.framework = 'UIKit'
+        
     end
 
 end

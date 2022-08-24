@@ -11,6 +11,29 @@
 
 @implementation LXMemoryInfo
 
+- (double)totalMemory{
+    return [LXMemoryInfo totalMemory];
+}
+
+- (double)usedMemory{
+    return [LXMemoryInfo usedMemory];
+}
+
+- (double)appPhysFootprintMemory{
+    return [LXMemoryInfo appPhysFootprintMemory];
+}
+
+
+- (double)appUsedMemory{
+    return [LXMemoryInfo appUsedMemory];
+}
+
+
+- (double)appMaxMemory{
+    return [LXMemoryInfo appMaxMemory];
+}
+
+
 // Total Memory
 + (double)totalMemory {
     // Find the total amount of memory
@@ -50,7 +73,7 @@
 }
 
 // Free Memory
-+ (double)freeMemory:(BOOL)inPercent {
++ (double)freeMemory{
     // Find the total amount of free memory
     @try {
         // Set up the variables
@@ -63,19 +86,7 @@
             return -1;
         }
         
-        // Check if the user wants it in percent
-        if (inPercent) {
-            // Percent
-            // Convert to doubles
-            double FM = [self totalMemory];
-            double AM = ((vm_page_size * vmStats.free_count) / 1024.0) / 1024.0;
-            // Get the percent
-            TotalMemory = (AM * 100) / FM;
-        } else {
-            // Not in percent
-            // Total Memory (formatted)
-            TotalMemory = ((vm_page_size * vmStats.free_count) / 1024.0) / 1024.0;
-        }
+        TotalMemory = ((vm_page_size * vmStats.free_count) / 1024.0) / 1024.0;
         
         // Check to make sure it's valid
         if (TotalMemory <= 0) {
@@ -93,7 +104,7 @@
 }
 
 // Used Memory
-+ (double)usedMemory:(BOOL)inPercent {
++ (double)usedMemory{
     // Find the total amount of used memory
     @try {
         // Set up the variables
@@ -119,21 +130,8 @@
         natural_t UsedMemory = (natural_t)((vm_stat.active_count +
                                             vm_stat.inactive_count +
                                             vm_stat.wire_count) * pagesize);
-        natural_t AllMemory = [self totalMemory];
         
-        // Check if the user wants it in percent
-        if (inPercent) {
-            // Percent
-            // Convert to doubles
-            double UM = (UsedMemory /1024) / 1024;
-            double AM = AllMemory;
-            // Get the percent
-            TotalUsedMemory = (UM * 100) / AM;
-        } else {
-            // Not in percent
-            // Total Used Memory (formatted)
-            TotalUsedMemory = (UsedMemory / 1024.0) / 1024.0;
-        }
+        TotalUsedMemory = (UsedMemory / 1024.0) / 1024.0;
         
         // Check to make sure it's valid
         if (TotalUsedMemory <= 0) {
@@ -151,7 +149,7 @@
 }
 
 // Active Memory
-+ (double)activeMemory:(BOOL)inPercent {
++ (double)activeMemory{
     // Find the Active memory
     @try {
         // Set up the variables
@@ -173,19 +171,7 @@
             return -1;
         }
         
-        // Check if the user wants it in percent
-        if (inPercent) {
-            // Percent
-            // Convert to doubles
-            double FM = [self totalMemory];
-            double AM = ((vm_stat.active_count * pagesize) / 1024.0) / 1024.0;
-            // Get the percent
-            TotalMemory = (AM * 100) / FM;
-        } else {
-            // Not in percent
-            // Total Memory (formatted)
-            TotalMemory = ((vm_stat.active_count * pagesize) / 1024.0) / 1024.0;
-        }
+        TotalMemory = ((vm_stat.active_count * pagesize) / 1024.0) / 1024.0;
         
         // Check to make sure it's valid
         if (TotalMemory <= 0) {
@@ -203,7 +189,7 @@
 }
 
 // Inactive Memory
-+ (double)inactiveMemory:(BOOL)inPercent {
++ (double)inactiveMemory{
     // Find the Inactive memory
     @try {
         // Set up the variables
@@ -225,19 +211,7 @@
             return -1;
         }
         
-        // Check if the user wants it in percent
-        if (inPercent) {
-            // Percent
-            // Convert to doubles
-            double FM = [self totalMemory];
-            double AM = ((vm_stat.inactive_count * pagesize) / 1024.0) / 1024.0;
-            // Get the percent
-            TotalMemory = (AM * 100) / FM;
-        } else {
-            // Not in percent
-            // Total Memory (formatted)
-            TotalMemory = ((vm_stat.inactive_count * pagesize) / 1024.0) / 1024.0;
-        }
+        TotalMemory = ((vm_stat.inactive_count * pagesize) / 1024.0) / 1024.0;
         
         // Check to make sure it's valid
         if (TotalMemory <= 0) {
@@ -255,7 +229,7 @@
 }
 
 // Wired Memory
-+ (double)wiredMemory:(BOOL)inPercent {
++ (double)wiredMemory{
     // Find the Wired memory
     @try {
         // Set up the variables
@@ -277,19 +251,7 @@
             return -1;
         }
         
-        // Check if the user wants it in percent
-        if (inPercent) {
-            // Percent
-            // Convert to doubles
-            double FM = [self totalMemory];
-            double AM = ((vm_stat.wire_count * pagesize) / 1024.0) / 1024.0;
-            // Get the percent
-            TotalMemory = (AM * 100) / FM;
-        } else {
-            // Not in percent
-            // Total Memory (formatted)
-            TotalMemory = ((vm_stat.wire_count * pagesize) / 1024.0) / 1024.0;
-        }
+        TotalMemory = ((vm_stat.wire_count * pagesize) / 1024.0) / 1024.0;
         
         // Check to make sure it's valid
         if (TotalMemory <= 0) {
@@ -307,7 +269,7 @@
 }
 
 // Purgable Memory
-+ (double)purgableMemory:(BOOL)inPercent {
++ (double)purgableMemory{
     // Find the Purgable memory
     @try {
         // Set up the variables
@@ -329,19 +291,7 @@
             return -1;
         }
         
-        // Check if the user wants it in percent
-        if (inPercent) {
-            // Percent
-            // Convert to doubles
-            double FM = [self totalMemory];
-            double AM = ((vm_stat.purgeable_count * pagesize) / 1024.0) / 1024.0;
-            // Get the percent
-            TotalMemory = (AM * 100) / FM;
-        } else {
-            // Not in percent
-            // Total Memory (formatted)
-            TotalMemory = ((vm_stat.purgeable_count * pagesize) / 1024.0) / 1024.0;
-        }
+        TotalMemory = ((vm_stat.purgeable_count * pagesize) / 1024.0) / 1024.0;
         
         // Check to make sure it's valid
         if (TotalMemory <= 0) {
@@ -356,6 +306,46 @@
         // Error
         return -1;
     }
+}
+
++ (double)appPhysFootprintMemory{
+    int64_t memoryUsageInByte = 0;
+    task_vm_info_data_t vmInfo;
+    mach_msg_type_number_t count = TASK_VM_INFO_COUNT;
+    kern_return_t kernelReturn = task_info(mach_task_self(), TASK_VM_INFO, (task_info_t) &vmInfo, &count);
+    if(kernelReturn == KERN_SUCCESS) {
+        memoryUsageInByte = (int64_t) vmInfo.phys_footprint;
+    }
+    return (double)memoryUsageInByte/ 1024.0 / 1024.0;
+}
+
++ (double)appUsedMemory{
+    mach_task_basic_info_data_t taskInfo;
+    unsigned infoCount = sizeof(taskInfo);
+    kern_return_t kernReturn = task_info(mach_task_self(),
+                                         MACH_TASK_BASIC_INFO,
+                                         (task_info_t)&taskInfo,
+                                         &infoCount);
+    if (kernReturn != KERN_SUCCESS
+        ) {
+        return NSNotFound;
+    }
+    return taskInfo.resident_size / 1024.0 / 1024.0;
+}
+
++ (double)appMaxMemory{
+    mach_task_basic_info_data_t taskInfo;
+    unsigned infoCount = sizeof(taskInfo);
+    kern_return_t kernReturn = task_info(mach_task_self(),
+                                         MACH_TASK_BASIC_INFO,
+                                         (task_info_t)&taskInfo,
+                                         &infoCount);
+    
+    if (kernReturn != KERN_SUCCESS
+        ) {
+        return NSNotFound;
+    }
+    return taskInfo.resident_size_max / 1024.0 / 1024.0;
 }
 
 

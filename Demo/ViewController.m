@@ -16,6 +16,10 @@
 
 /*测试崩溃*/
 @property (nonatomic,strong)UIButton *testCrashBtn;
+@property (nonatomic,strong)UIButton *testGPUBtn;
+@property (nonatomic,strong)UIButton *testCPUBtn;
+@property (nonatomic,strong)UIButton *testFPSBtn;
+@property (nonatomic,strong)UIButton *testMEMBtn;
 
 @property (nonatomic,assign)BOOL dismissed;
 
@@ -34,7 +38,7 @@
     UIButton *testLagBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [testLagBtn setTitle:@"测试卡顿" forState:UIControlStateNormal];
     [testLagBtn setTitleColor:UIColor.redColor forState:UIControlStateNormal];
-    testLagBtn.frame = CGRectMake(CGRectGetMidX(self.view.bounds)-100, 150, 200, 50);
+    testLagBtn.frame = CGRectMake(CGRectGetMidX(self.view.bounds)-100, 100, 200, 50);
     [testLagBtn addTarget:self action:@selector(testLagAction:) forControlEvents:UIControlEventTouchUpInside];
     self.testLagBtn = testLagBtn;
     [self.view addSubview:testLagBtn];
@@ -42,10 +46,42 @@
     UIButton *testCrashBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     [testCrashBtn setTitle:@"测试崩溃" forState:UIControlStateNormal];
     [testCrashBtn setTitleColor:UIColor.redColor forState:UIControlStateNormal];
-    testCrashBtn.frame = CGRectMake(CGRectGetMidX(self.view.bounds)-100, 220, 200, 50);
+    testCrashBtn.frame = CGRectMake(CGRectGetMidX(self.view.bounds)-100, 170, 200, 50);
     [testCrashBtn addTarget:self action:@selector(testCrashAction:) forControlEvents:UIControlEventTouchUpInside];
     self.testCrashBtn = testCrashBtn;
     [self.view addSubview:testCrashBtn];
+    
+    UIButton *testGPUBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [testGPUBtn setTitle:@"GPU" forState:UIControlStateNormal];
+    [testGPUBtn setTitleColor:UIColor.redColor forState:UIControlStateNormal];
+    testGPUBtn.frame = CGRectMake(CGRectGetMidX(self.view.bounds)-100, 240, 200, 50);
+    [testGPUBtn addTarget:self action:@selector(testGPUAction:) forControlEvents:UIControlEventTouchUpInside];
+    self.testGPUBtn = testGPUBtn;
+    [self.view addSubview:testGPUBtn];
+    
+    UIButton *testCPUBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [testCPUBtn setTitle:@"CPU" forState:UIControlStateNormal];
+    [testCPUBtn setTitleColor:UIColor.redColor forState:UIControlStateNormal];
+    testCPUBtn.frame = CGRectMake(CGRectGetMidX(self.view.bounds)-100, 310, 200, 50);
+    [testCPUBtn addTarget:self action:@selector(testCPUAction:) forControlEvents:UIControlEventTouchUpInside];
+    self.testCPUBtn = testCPUBtn;
+    [self.view addSubview:testCPUBtn];
+    
+    UIButton *testMEMBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [testMEMBtn setTitle:@"MEM" forState:UIControlStateNormal];
+    [testMEMBtn setTitleColor:UIColor.redColor forState:UIControlStateNormal];
+    testMEMBtn.frame = CGRectMake(CGRectGetMidX(self.view.bounds)-100, 380, 200, 50);
+    [testMEMBtn addTarget:self action:@selector(testMEMAction:) forControlEvents:UIControlEventTouchUpInside];
+    self.testMEMBtn = testMEMBtn;
+    [self.view addSubview:testMEMBtn];
+    
+    UIButton *testFPSBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [testFPSBtn setTitle:@"FPS" forState:UIControlStateNormal];
+    [testFPSBtn setTitleColor:UIColor.redColor forState:UIControlStateNormal];
+    testFPSBtn.frame = CGRectMake(CGRectGetMidX(self.view.bounds)-100, 450, 200, 50);
+    [testFPSBtn addTarget:self action:@selector(testFPSAction:) forControlEvents:UIControlEventTouchUpInside];
+    self.testFPSBtn = testFPSBtn;
+    [self.view addSubview:testFPSBtn];
 
 //    signal(SIGABRT, mySignalHandler);
 //    signal(SIGSEGV, mySignalHandler);
@@ -55,21 +91,17 @@
     pid_t pid = getpid();
     printf("主函数开跑 进程：%d\n",pid);
     
-    [[LXCPUMonitor defaultMonitor] startMonitorWithTimeInterval:1 handler:^(float cpuUsage) {
-        if (cpuUsage > 50) {
-            NSLog(@"CPU挺忙呀！CPU使用情况：%f\%%",cpuUsage);
-        }
-    }];
+
     
     [[LXLagMonitor defaultMonitor] startMonitorWithReportBlock:^(LXLag * _Nonnull lagInfo) {
         NSLog(@"卡顿发生：%@",lagInfo.description);
         [self showLag:lagInfo];
     }];
     
-    [[LXCrashMonitor defaultMonitor] startMonitorWithTypes:LXCrashTypeAll reportBlock:^(LXCrash * _Nonnull crashInfo) {
-        NSLog(@"崩溃发生了：%@",crashInfo.description);
-        [self showCrash:crashInfo];
-    }];
+//    [[LXCrashMonitor defaultMonitor] startMonitorWithTypes:LXCrashTypeAll reportBlock:^(LXCrash * _Nonnull crashInfo) {
+//        NSLog(@"崩溃发生了：%@",crashInfo.description);
+//        [self showCrash:crashInfo];
+//    }];
     
 }
 
@@ -89,6 +121,40 @@
   //  越个界试试
     id t = [array objectAtIndex:0];
 }
+
+- (void)testGPUAction:(id)sender{
+    if ([LXUIMonitor  isMonitor:LXUIMonitorTypeGPU]) {
+        [LXUIMonitor stopMonitor:LXUIMonitorTypeGPU];
+    }else{
+        [LXUIMonitor startMonitor:LXUIMonitorTypeGPU];
+    }
+}
+
+- (void)testCPUAction:(id)sender{
+    if ([LXUIMonitor  isMonitor:LXUIMonitorTypeCPU]) {
+        [LXUIMonitor stopMonitor:LXUIMonitorTypeCPU];
+    }else{
+        [LXUIMonitor startMonitor:LXUIMonitorTypeCPU];
+    }
+}
+
+- (void)testMEMAction:(id)sender{
+    if ([LXUIMonitor  isMonitor:LXUIMonitorTypeMEM]) {
+        [LXUIMonitor stopMonitor:LXUIMonitorTypeMEM];
+    }else{
+        [LXUIMonitor startMonitor:LXUIMonitorTypeMEM];
+    }
+}
+
+- (void)testFPSAction:(id)sender{
+    if ([LXUIMonitor  isMonitor:LXUIMonitorTypeFPS]) {
+        [LXUIMonitor stopMonitor:LXUIMonitorTypeFPS];
+    }else{
+        [LXUIMonitor startMonitor:LXUIMonitorTypeFPS];
+    }
+}
+
+
 
 - (void)showLag:(LXLag *)lagInfo{
     NSString *title = nil;

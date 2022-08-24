@@ -8,6 +8,34 @@
 
 /* Begin PBXBuildFile section */
 		03371AC9A040B1AC874B3FAF /* Pods_LXPerformanceKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35DAD71C63F1237993C1464D /* Pods_LXPerformanceKit.framework */; };
+		2D1203B228B1EF5D001B26BB /* LXCurveChartView.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D1203B028B1EF5D001B26BB /* LXCurveChartView.h */; };
+		2D1203B328B1EF5D001B26BB /* LXCurveChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D1203B128B1EF5D001B26BB /* LXCurveChartView.m */; };
+		2D38AF3528B1F41100D87F7E /* LXUICPUMonitor.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D38AF3328B1F41100D87F7E /* LXUICPUMonitor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2D38AF3628B1F41100D87F7E /* LXUICPUMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D38AF3428B1F41100D87F7E /* LXUICPUMonitor.m */; };
+		2D38AF3928B24C8000D87F7E /* LXExceptViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D38AF3728B24C8000D87F7E /* LXExceptViewController.h */; };
+		2D38AF3A28B24C8000D87F7E /* LXExceptViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D38AF3828B24C8000D87F7E /* LXExceptViewController.m */; };
+		2D38AF3D28B24E0B00D87F7E /* LXLogViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D38AF3B28B24E0B00D87F7E /* LXLogViewController.h */; };
+		2D38AF3E28B24E0B00D87F7E /* LXLogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D38AF3C28B24E0B00D87F7E /* LXLogViewController.m */; };
+		2D38AF4128B293F800D87F7E /* LXUIFPSMonitor.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D38AF3F28B293F800D87F7E /* LXUIFPSMonitor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2D38AF4228B293F800D87F7E /* LXUIFPSMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D38AF4028B293F800D87F7E /* LXUIFPSMonitor.m */; };
+		2D38AF4528B2941600D87F7E /* LXUIGPUMonitor.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D38AF4328B2941600D87F7E /* LXUIGPUMonitor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2D38AF4628B2941600D87F7E /* LXUIGPUMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D38AF4428B2941600D87F7E /* LXUIGPUMonitor.m */; };
+		2D38AF4928B2943100D87F7E /* LXUIMEMMonitor.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D38AF4728B2943100D87F7E /* LXUIMEMMonitor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2D38AF4A28B2943100D87F7E /* LXUIMEMMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D38AF4828B2943100D87F7E /* LXUIMEMMonitor.m */; };
+		2D85A42428AB47180077449B /* LXGPUUtilization.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D85A42228AB47180077449B /* LXGPUUtilization.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2D85A42528AB47180077449B /* LXGPUUtilization.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D85A42328AB47180077449B /* LXGPUUtilization.m */; };
+		2D85A42928AB744A0077449B /* LXGPUMonitor.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D85A42728AB744A0077449B /* LXGPUMonitor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2D85A42A28AB744A0077449B /* LXGPUMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D85A42828AB744A0077449B /* LXGPUMonitor.m */; };
+		2D85A42E28AB7E510077449B /* LXFPSMonitor.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D85A42C28AB7E510077449B /* LXFPSMonitor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2D85A42F28AB7E510077449B /* LXFPSMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D85A42D28AB7E510077449B /* LXFPSMonitor.m */; };
+		2D85A43128AB97540077449B /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D85A43028AB97540077449B /* IOKit.framework */; };
+		2D85A43528ABA2BF0077449B /* LXMEMMonitor.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D85A43328ABA2BF0077449B /* LXMEMMonitor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2D85A43628ABA2BF0077449B /* LXMEMMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D85A43428ABA2BF0077449B /* LXMEMMonitor.m */; };
+		2DD0A61228B1E240008FFCBA /* LXUIMonitor.h in Headers */ = {isa = PBXBuildFile; fileRef = 2DD0A61028B1E240008FFCBA /* LXUIMonitor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2DD0A61328B1E240008FFCBA /* LXUIMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DD0A61128B1E240008FFCBA /* LXUIMonitor.m */; };
+		2DD0A61828B1E81C008FFCBA /* LXWaveView.h in Headers */ = {isa = PBXBuildFile; fileRef = 2DD0A61628B1E81C008FFCBA /* LXWaveView.h */; };
+		2DD0A61928B1E81C008FFCBA /* LXWaveView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DD0A61728B1E81C008FFCBA /* LXWaveView.m */; };
+		2DF4279828B60015007EA37D /* LXUI.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DF4279728B60015007EA37D /* LXUI.xcassets */; };
 		53827E048246E79B188537C5 /* Pods_LXPerformanceKit_LXPerformanceKitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25E995CD6A21CAF684976A76 /* Pods_LXPerformanceKit_LXPerformanceKitTests.framework */; };
 		C723C0D3256E5BCF0088A297 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C723C0D2256E5BCF0088A297 /* AppDelegate.m */; };
 		C723C0D6256E5BCF0088A297 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C723C0D5256E5BCF0088A297 /* SceneDelegate.m */; };
@@ -23,8 +51,8 @@
 		C7E6DD36256B3FE3007E95F5 /* LXPerformanceKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7E6DD2C256B3FE2007E95F5 /* LXPerformanceKit.framework */; };
 		C7E6DD3B256B3FE3007E95F5 /* LXPerformanceKitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C7E6DD3A256B3FE3007E95F5 /* LXPerformanceKitTests.m */; };
 		C7E6DD3D256B3FE3007E95F5 /* LXPerformanceKit.h in Headers */ = {isa = PBXBuildFile; fileRef = C7E6DD2F256B3FE2007E95F5 /* LXPerformanceKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C7E6DD8C256B4142007E95F5 /* LXPTools.h in Headers */ = {isa = PBXBuildFile; fileRef = C7E6DD49256B4142007E95F5 /* LXPTools.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C7E6DD8D256B4142007E95F5 /* LXPTools.m in Sources */ = {isa = PBXBuildFile; fileRef = C7E6DD4A256B4142007E95F5 /* LXPTools.m */; };
+		C7E6DD8C256B4142007E95F5 /* LXToolsBox.h in Headers */ = {isa = PBXBuildFile; fileRef = C7E6DD49256B4142007E95F5 /* LXToolsBox.h */; };
+		C7E6DD8D256B4142007E95F5 /* LXToolsBox.m in Sources */ = {isa = PBXBuildFile; fileRef = C7E6DD4A256B4142007E95F5 /* LXToolsBox.m */; };
 		C7E6DD8E256B4142007E95F5 /* LXCPUMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = C7E6DD4C256B4142007E95F5 /* LXCPUMonitor.m */; };
 		C7E6DD8F256B4142007E95F5 /* LXCPUMonitor.h in Headers */ = {isa = PBXBuildFile; fileRef = C7E6DD4D256B4142007E95F5 /* LXCPUMonitor.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C7E6DD90256B4142007E95F5 /* LXLag.h in Headers */ = {isa = PBXBuildFile; fileRef = C7E6DD4F256B4142007E95F5 /* LXLag.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -56,7 +84,7 @@
 		C7E6DDAA256B4143007E95F5 /* NSDate+LXFormat.h in Headers */ = {isa = PBXBuildFile; fileRef = C7E6DD6B256B4142007E95F5 /* NSDate+LXFormat.h */; };
 		C7E6DDAB256B4143007E95F5 /* LXCrashType.h in Headers */ = {isa = PBXBuildFile; fileRef = C7E6DD6C256B4142007E95F5 /* LXCrashType.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C7E6DDAC256B4143007E95F5 /* LXMach.h in Headers */ = {isa = PBXBuildFile; fileRef = C7E6DD6D256B4142007E95F5 /* LXMach.h */; };
-		C7E6DDAD256B4143007E95F5 /* LXBacktraceLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = C7E6DD6E256B4142007E95F5 /* LXBacktraceLogger.m */; };
+		C7E6DDAD256B4143007E95F5 /* LXBacktrace.m in Sources */ = {isa = PBXBuildFile; fileRef = C7E6DD6E256B4142007E95F5 /* LXBacktrace.m */; };
 		C7E6DDAE256B4143007E95F5 /* LXCrash_CPPException.h in Headers */ = {isa = PBXBuildFile; fileRef = C7E6DD6F256B4142007E95F5 /* LXCrash_CPPException.h */; };
 		C7E6DDAF256B4143007E95F5 /* LXCrash_NSException.m in Sources */ = {isa = PBXBuildFile; fileRef = C7E6DD70256B4142007E95F5 /* LXCrash_NSException.m */; };
 		C7E6DDB0256B4143007E95F5 /* LXCrash_Signal.h in Headers */ = {isa = PBXBuildFile; fileRef = C7E6DD71256B4142007E95F5 /* LXCrash_Signal.h */; };
@@ -72,7 +100,7 @@
 		C7E6DDBA256B4143007E95F5 /* NSDate+LXFormat.m in Sources */ = {isa = PBXBuildFile; fileRef = C7E6DD7B256B4142007E95F5 /* NSDate+LXFormat.m */; };
 		C7E6DDBB256B4143007E95F5 /* LXCrash_MachException.c in Sources */ = {isa = PBXBuildFile; fileRef = C7E6DD7C256B4142007E95F5 /* LXCrash_MachException.c */; };
 		C7E6DDBC256B4143007E95F5 /* LXMach_Arm.c in Sources */ = {isa = PBXBuildFile; fileRef = C7E6DD7D256B4142007E95F5 /* LXMach_Arm.c */; };
-		C7E6DDBD256B4143007E95F5 /* LXBacktraceLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = C7E6DD7E256B4142007E95F5 /* LXBacktraceLogger.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C7E6DDBD256B4143007E95F5 /* LXBacktrace.h in Headers */ = {isa = PBXBuildFile; fileRef = C7E6DD7E256B4142007E95F5 /* LXBacktrace.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C7E6DDBE256B4143007E95F5 /* LXMach_Arm64.c in Sources */ = {isa = PBXBuildFile; fileRef = C7E6DD7F256B4142007E95F5 /* LXMach_Arm64.c */; };
 		C7E6DDBF256B4143007E95F5 /* LXMach_x86_64.c in Sources */ = {isa = PBXBuildFile; fileRef = C7E6DD80256B4142007E95F5 /* LXMach_x86_64.c */; };
 		C7E6DDC0256B4143007E95F5 /* LXMach.c in Sources */ = {isa = PBXBuildFile; fileRef = C7E6DD81256B4142007E95F5 /* LXMach.c */; };
@@ -129,6 +157,35 @@
 
 /* Begin PBXFileReference section */
 		25E995CD6A21CAF684976A76 /* Pods_LXPerformanceKit_LXPerformanceKitTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LXPerformanceKit_LXPerformanceKitTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D1203B028B1EF5D001B26BB /* LXCurveChartView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LXCurveChartView.h; sourceTree = "<group>"; };
+		2D1203B128B1EF5D001B26BB /* LXCurveChartView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LXCurveChartView.m; sourceTree = "<group>"; };
+		2D38AF3328B1F41100D87F7E /* LXUICPUMonitor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LXUICPUMonitor.h; sourceTree = "<group>"; };
+		2D38AF3428B1F41100D87F7E /* LXUICPUMonitor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LXUICPUMonitor.m; sourceTree = "<group>"; };
+		2D38AF3728B24C8000D87F7E /* LXExceptViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LXExceptViewController.h; sourceTree = "<group>"; };
+		2D38AF3828B24C8000D87F7E /* LXExceptViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LXExceptViewController.m; sourceTree = "<group>"; };
+		2D38AF3B28B24E0B00D87F7E /* LXLogViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LXLogViewController.h; sourceTree = "<group>"; };
+		2D38AF3C28B24E0B00D87F7E /* LXLogViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LXLogViewController.m; sourceTree = "<group>"; };
+		2D38AF3F28B293F800D87F7E /* LXUIFPSMonitor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LXUIFPSMonitor.h; sourceTree = "<group>"; };
+		2D38AF4028B293F800D87F7E /* LXUIFPSMonitor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LXUIFPSMonitor.m; sourceTree = "<group>"; };
+		2D38AF4328B2941600D87F7E /* LXUIGPUMonitor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LXUIGPUMonitor.h; sourceTree = "<group>"; };
+		2D38AF4428B2941600D87F7E /* LXUIGPUMonitor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LXUIGPUMonitor.m; sourceTree = "<group>"; };
+		2D38AF4728B2943100D87F7E /* LXUIMEMMonitor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LXUIMEMMonitor.h; sourceTree = "<group>"; };
+		2D38AF4828B2943100D87F7E /* LXUIMEMMonitor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LXUIMEMMonitor.m; sourceTree = "<group>"; };
+		2D85A42228AB47180077449B /* LXGPUUtilization.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LXGPUUtilization.h; sourceTree = "<group>"; };
+		2D85A42328AB47180077449B /* LXGPUUtilization.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LXGPUUtilization.m; sourceTree = "<group>"; };
+		2D85A42628AB4AE00077449B /* LXIOKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LXIOKit.h; sourceTree = "<group>"; };
+		2D85A42728AB744A0077449B /* LXGPUMonitor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LXGPUMonitor.h; sourceTree = "<group>"; };
+		2D85A42828AB744A0077449B /* LXGPUMonitor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LXGPUMonitor.m; sourceTree = "<group>"; };
+		2D85A42C28AB7E510077449B /* LXFPSMonitor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LXFPSMonitor.h; sourceTree = "<group>"; };
+		2D85A42D28AB7E510077449B /* LXFPSMonitor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LXFPSMonitor.m; sourceTree = "<group>"; };
+		2D85A43028AB97540077449B /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk/System/Library/Frameworks/IOKit.framework; sourceTree = DEVELOPER_DIR; };
+		2D85A43328ABA2BF0077449B /* LXMEMMonitor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LXMEMMonitor.h; sourceTree = "<group>"; };
+		2D85A43428ABA2BF0077449B /* LXMEMMonitor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LXMEMMonitor.m; sourceTree = "<group>"; };
+		2DD0A61028B1E240008FFCBA /* LXUIMonitor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LXUIMonitor.h; sourceTree = "<group>"; };
+		2DD0A61128B1E240008FFCBA /* LXUIMonitor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LXUIMonitor.m; sourceTree = "<group>"; };
+		2DD0A61628B1E81C008FFCBA /* LXWaveView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LXWaveView.h; sourceTree = "<group>"; };
+		2DD0A61728B1E81C008FFCBA /* LXWaveView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LXWaveView.m; sourceTree = "<group>"; };
+		2DF4279728B60015007EA37D /* LXUI.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = LXUI.xcassets; sourceTree = "<group>"; };
 		35DAD71C63F1237993C1464D /* Pods_LXPerformanceKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LXPerformanceKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CA08A1EE938E7CDC5F79E19 /* Pods-Demo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Demo.debug.xcconfig"; path = "Target Support Files/Pods-Demo/Pods-Demo.debug.xcconfig"; sourceTree = "<group>"; };
 		7968345F0A51E665A388F82A /* Pods-LXPerformanceKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LXPerformanceKit.release.xcconfig"; path = "Target Support Files/Pods-LXPerformanceKit/Pods-LXPerformanceKit.release.xcconfig"; sourceTree = "<group>"; };
@@ -159,8 +216,8 @@
 		C7E6DD35256B3FE3007E95F5 /* LXPerformanceKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LXPerformanceKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C7E6DD3A256B3FE3007E95F5 /* LXPerformanceKitTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LXPerformanceKitTests.m; sourceTree = "<group>"; };
 		C7E6DD3C256B3FE3007E95F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C7E6DD49256B4142007E95F5 /* LXPTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXPTools.h; sourceTree = "<group>"; };
-		C7E6DD4A256B4142007E95F5 /* LXPTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXPTools.m; sourceTree = "<group>"; };
+		C7E6DD49256B4142007E95F5 /* LXToolsBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXToolsBox.h; sourceTree = "<group>"; };
+		C7E6DD4A256B4142007E95F5 /* LXToolsBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXToolsBox.m; sourceTree = "<group>"; };
 		C7E6DD4C256B4142007E95F5 /* LXCPUMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXCPUMonitor.m; sourceTree = "<group>"; };
 		C7E6DD4D256B4142007E95F5 /* LXCPUMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXCPUMonitor.h; sourceTree = "<group>"; };
 		C7E6DD4F256B4142007E95F5 /* LXLag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXLag.h; sourceTree = "<group>"; };
@@ -192,7 +249,7 @@
 		C7E6DD6B256B4142007E95F5 /* NSDate+LXFormat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+LXFormat.h"; sourceTree = "<group>"; };
 		C7E6DD6C256B4142007E95F5 /* LXCrashType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXCrashType.h; sourceTree = "<group>"; };
 		C7E6DD6D256B4142007E95F5 /* LXMach.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXMach.h; sourceTree = "<group>"; };
-		C7E6DD6E256B4142007E95F5 /* LXBacktraceLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXBacktraceLogger.m; sourceTree = "<group>"; };
+		C7E6DD6E256B4142007E95F5 /* LXBacktrace.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXBacktrace.m; sourceTree = "<group>"; };
 		C7E6DD6F256B4142007E95F5 /* LXCrash_CPPException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXCrash_CPPException.h; sourceTree = "<group>"; };
 		C7E6DD70256B4142007E95F5 /* LXCrash_NSException.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXCrash_NSException.m; sourceTree = "<group>"; };
 		C7E6DD71256B4142007E95F5 /* LXCrash_Signal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXCrash_Signal.h; sourceTree = "<group>"; };
@@ -208,7 +265,7 @@
 		C7E6DD7B256B4142007E95F5 /* NSDate+LXFormat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+LXFormat.m"; sourceTree = "<group>"; };
 		C7E6DD7C256B4142007E95F5 /* LXCrash_MachException.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = LXCrash_MachException.c; sourceTree = "<group>"; };
 		C7E6DD7D256B4142007E95F5 /* LXMach_Arm.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = LXMach_Arm.c; sourceTree = "<group>"; };
-		C7E6DD7E256B4142007E95F5 /* LXBacktraceLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXBacktraceLogger.h; sourceTree = "<group>"; };
+		C7E6DD7E256B4142007E95F5 /* LXBacktrace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXBacktrace.h; sourceTree = "<group>"; };
 		C7E6DD7F256B4142007E95F5 /* LXMach_Arm64.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = LXMach_Arm64.c; sourceTree = "<group>"; };
 		C7E6DD80256B4142007E95F5 /* LXMach_x86_64.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = LXMach_x86_64.c; sourceTree = "<group>"; };
 		C7E6DD81256B4142007E95F5 /* LXMach.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = LXMach.c; sourceTree = "<group>"; };
@@ -254,6 +311,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D85A43128AB97540077449B /* IOKit.framework in Frameworks */,
 				03371AC9A040B1AC874B3FAF /* Pods_LXPerformanceKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -270,9 +328,66 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2D85A42128AB46DE0077449B /* LXGPUMonitor */ = {
+			isa = PBXGroup;
+			children = (
+				2D85A42228AB47180077449B /* LXGPUUtilization.h */,
+				2D85A42328AB47180077449B /* LXGPUUtilization.m */,
+				2D85A42628AB4AE00077449B /* LXIOKit.h */,
+				2D85A42728AB744A0077449B /* LXGPUMonitor.h */,
+				2D85A42828AB744A0077449B /* LXGPUMonitor.m */,
+			);
+			path = LXGPUMonitor;
+			sourceTree = "<group>";
+		};
+		2D85A42B28AB78FE0077449B /* LXFPSMonitor */ = {
+			isa = PBXGroup;
+			children = (
+				2D85A42C28AB7E510077449B /* LXFPSMonitor.h */,
+				2D85A42D28AB7E510077449B /* LXFPSMonitor.m */,
+			);
+			path = LXFPSMonitor;
+			sourceTree = "<group>";
+		};
+		2D85A43228ABA1620077449B /* LXMEMMonitor */ = {
+			isa = PBXGroup;
+			children = (
+				2D85A43328ABA2BF0077449B /* LXMEMMonitor.h */,
+				2D85A43428ABA2BF0077449B /* LXMEMMonitor.m */,
+			);
+			path = LXMEMMonitor;
+			sourceTree = "<group>";
+		};
+		2D85A66828ACDF6C0077449B /* LXUIMonitor */ = {
+			isa = PBXGroup;
+			children = (
+				2DD0A61028B1E240008FFCBA /* LXUIMonitor.h */,
+				2DD0A61128B1E240008FFCBA /* LXUIMonitor.m */,
+				2D38AF3328B1F41100D87F7E /* LXUICPUMonitor.h */,
+				2D38AF3428B1F41100D87F7E /* LXUICPUMonitor.m */,
+				2D38AF3F28B293F800D87F7E /* LXUIFPSMonitor.h */,
+				2D38AF4028B293F800D87F7E /* LXUIFPSMonitor.m */,
+				2D38AF4328B2941600D87F7E /* LXUIGPUMonitor.h */,
+				2D38AF4428B2941600D87F7E /* LXUIGPUMonitor.m */,
+				2D38AF4728B2943100D87F7E /* LXUIMEMMonitor.h */,
+				2D38AF4828B2943100D87F7E /* LXUIMEMMonitor.m */,
+				2D38AF3728B24C8000D87F7E /* LXExceptViewController.h */,
+				2D38AF3828B24C8000D87F7E /* LXExceptViewController.m */,
+				2D38AF3B28B24E0B00D87F7E /* LXLogViewController.h */,
+				2D38AF3C28B24E0B00D87F7E /* LXLogViewController.m */,
+				2DD0A61628B1E81C008FFCBA /* LXWaveView.h */,
+				2DD0A61728B1E81C008FFCBA /* LXWaveView.m */,
+				2D1203B028B1EF5D001B26BB /* LXCurveChartView.h */,
+				2D1203B128B1EF5D001B26BB /* LXCurveChartView.m */,
+				2DF4279728B60015007EA37D /* LXUI.xcassets */,
+			);
+			path = LXUIMonitor;
+			sourceTree = "<group>";
+		};
 		31E11B4AD3472823E0EB0269 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2D85A43028AB97540077449B /* IOKit.framework */,
 				35DAD71C63F1237993C1464D /* Pods_LXPerformanceKit.framework */,
 				25E995CD6A21CAF684976A76 /* Pods_LXPerformanceKit_LXPerformanceKitTests.framework */,
 				9F9148BE65F6A76EA1B29184 /* Pods_Demo.framework */,
@@ -345,6 +460,10 @@
 		C7E6DD2E256B3FE2007E95F5 /* LXPerformanceKit */ = {
 			isa = PBXGroup;
 			children = (
+				2D85A66828ACDF6C0077449B /* LXUIMonitor */,
+				2D85A43228ABA1620077449B /* LXMEMMonitor */,
+				2D85A42B28AB78FE0077449B /* LXFPSMonitor */,
+				2D85A42128AB46DE0077449B /* LXGPUMonitor */,
 				C7E6DD69256B4142007E95F5 /* LXCrashMonitor */,
 				C7E6DD4B256B4142007E95F5 /* LXCPUMonitor */,
 				C7E6DD4E256B4142007E95F5 /* LXLagMonitor */,
@@ -368,10 +487,10 @@
 		C7E6DD48256B4142007E95F5 /* LXTools */ = {
 			isa = PBXGroup;
 			children = (
-				C7E6DD7E256B4142007E95F5 /* LXBacktraceLogger.h */,
-				C7E6DD6E256B4142007E95F5 /* LXBacktraceLogger.m */,
-				C7E6DD49256B4142007E95F5 /* LXPTools.h */,
-				C7E6DD4A256B4142007E95F5 /* LXPTools.m */,
+				C7E6DD7E256B4142007E95F5 /* LXBacktrace.h */,
+				C7E6DD6E256B4142007E95F5 /* LXBacktrace.m */,
+				C7E6DD49256B4142007E95F5 /* LXToolsBox.h */,
+				C7E6DD4A256B4142007E95F5 /* LXToolsBox.m */,
 			);
 			path = LXTools;
 			sourceTree = "<group>";
@@ -488,19 +607,30 @@
 				C7E6DDC1256B4143007E95F5 /* LXCrash.h in Headers */,
 				C7E6DDCA256B4143007E95F5 /* LXCrashMonitor.h in Headers */,
 				C7E6DD90256B4142007E95F5 /* LXLag.h in Headers */,
+				2D38AF4928B2943100D87F7E /* LXUIMEMMonitor.h in Headers */,
 				C7E6DD91256B4142007E95F5 /* LXLagMonitor.h in Headers */,
 				C7E6DDAE256B4143007E95F5 /* LXCrash_CPPException.h in Headers */,
 				C7E6DDA6256B4143007E95F5 /* LXBatteryInfo.h in Headers */,
 				C7E6DDA7256B4143007E95F5 /* LXDeviceInfo.h in Headers */,
 				C7E6DD9C256B4142007E95F5 /* LXDiskInfo.h in Headers */,
+				2D38AF3928B24C8000D87F7E /* LXExceptViewController.h in Headers */,
 				C7E6DDA1256B4142007E95F5 /* LXMemoryInfo.h in Headers */,
 				C7E6DD9B256B4142007E95F5 /* LXCPUInfo.h in Headers */,
+				2D38AF3D28B24E0B00D87F7E /* LXLogViewController.h in Headers */,
 				C7E6DDA3256B4142007E95F5 /* LXSystemUtil.h in Headers */,
+				2D38AF4528B2941600D87F7E /* LXUIGPUMonitor.h in Headers */,
+				2D85A42E28AB7E510077449B /* LXFPSMonitor.h in Headers */,
+				2D38AF3528B1F41100D87F7E /* LXUICPUMonitor.h in Headers */,
+				2DD0A61228B1E240008FFCBA /* LXUIMonitor.h in Headers */,
+				2D85A42928AB744A0077449B /* LXGPUMonitor.h in Headers */,
+				2D38AF4128B293F800D87F7E /* LXUIFPSMonitor.h in Headers */,
+				2D85A42428AB47180077449B /* LXGPUUtilization.h in Headers */,
 				C7E6DDA5256B4142007E95F5 /* LXNetworkBandwidth.h in Headers */,
 				C7E6DDA4256B4142007E95F5 /* LXCarrierInfo.h in Headers */,
+				2D85A43528ABA2BF0077449B /* LXMEMMonitor.h in Headers */,
 				C7E6DD95256B4142007E95F5 /* LXNetworkInfo.h in Headers */,
-				C7E6DD8C256B4142007E95F5 /* LXPTools.h in Headers */,
-				C7E6DDBD256B4143007E95F5 /* LXBacktraceLogger.h in Headers */,
+				C7E6DD8C256B4142007E95F5 /* LXToolsBox.h in Headers */,
+				C7E6DDBD256B4143007E95F5 /* LXBacktrace.h in Headers */,
 				C7E6DD96256B4142007E95F5 /* LXSystem.h in Headers */,
 				C7E6DDC4256B4143007E95F5 /* LXCrash_NSException.h in Headers */,
 				C7E6DDB7256B4143007E95F5 /* LXCrashEntryContext.h in Headers */,
@@ -516,6 +646,8 @@
 				C7E6DDB3256B4143007E95F5 /* LXStackTracer.h in Headers */,
 				C7E6DDB0256B4143007E95F5 /* LXCrash_Signal.h in Headers */,
 				C7E6DDB4256B4143007E95F5 /* LXAppleMach.h in Headers */,
+				2D1203B228B1EF5D001B26BB /* LXCurveChartView.h in Headers */,
+				2DD0A61828B1E81C008FFCBA /* LXWaveView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -623,7 +755,7 @@
 		C7E6DD23256B3FE2007E95F5 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1220;
+				LastUpgradeCheck = 1330;
 				TargetAttributes = {
 					C723C0CE256E5BCF0088A297 = {
 						CreatedOnToolsVersion = 12.2;
@@ -695,6 +827,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2DF4279828B60015007EA37D /* LXUI.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -843,6 +976,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C7E6DDC6256B4143007E95F5 /* LXCrashEntryContext.c in Sources */,
+				2DD0A61928B1E81C008FFCBA /* LXWaveView.m in Sources */,
 				C7E6DD99256B4142007E95F5 /* LXSystemUtil.m in Sources */,
 				C7E6DDBF256B4143007E95F5 /* LXMach_x86_64.c in Sources */,
 				C7E6DDC3256B4143007E95F5 /* LXCrash_Signal.c in Sources */,
@@ -853,26 +987,38 @@
 				C7E6DDAF256B4143007E95F5 /* LXCrash_NSException.m in Sources */,
 				C7E6DD93256B4142007E95F5 /* LXLagMonitor.m in Sources */,
 				C7E6DD98256B4142007E95F5 /* LXCarrierInfo.m in Sources */,
+				2D38AF4228B293F800D87F7E /* LXUIFPSMonitor.m in Sources */,
 				C7E6DDB2256B4143007E95F5 /* LXCrashMonitor.m in Sources */,
-				C7E6DD8D256B4142007E95F5 /* LXPTools.m in Sources */,
+				C7E6DD8D256B4142007E95F5 /* LXToolsBox.m in Sources */,
 				C7E6DDC9256B4143007E95F5 /* LXStackTracer.m in Sources */,
+				2D38AF3A28B24C8000D87F7E /* LXExceptViewController.m in Sources */,
 				C7E6DD94256B4142007E95F5 /* LXMemoryInfo.m in Sources */,
 				C7E6DD97256B4142007E95F5 /* LXNetworkBandwidth.m in Sources */,
+				2D38AF3E28B24E0B00D87F7E /* LXLogViewController.m in Sources */,
+				2D38AF4628B2941600D87F7E /* LXUIGPUMonitor.m in Sources */,
 				C7E6DDC0256B4143007E95F5 /* LXMach.c in Sources */,
 				C7E6DDBA256B4143007E95F5 /* NSDate+LXFormat.m in Sources */,
 				C7E6DDBE256B4143007E95F5 /* LXMach_Arm64.c in Sources */,
 				C7E6DDB1256B4143007E95F5 /* LXCrash.m in Sources */,
 				C7E6DDBB256B4143007E95F5 /* LXCrash_MachException.c in Sources */,
-				C7E6DDAD256B4143007E95F5 /* LXBacktraceLogger.m in Sources */,
+				C7E6DDAD256B4143007E95F5 /* LXBacktrace.m in Sources */,
+				2D85A43628ABA2BF0077449B /* LXMEMMonitor.m in Sources */,
 				C7E6DDB8256B4143007E95F5 /* LXCrash_CPPException.mm in Sources */,
 				C7E6DDC2256B4143007E95F5 /* LXMach_i386.c in Sources */,
 				C7E6DDA0256B4142007E95F5 /* LXNetworkInfo.m in Sources */,
+				2D85A42528AB47180077449B /* LXGPUUtilization.m in Sources */,
+				2D85A42F28AB7E510077449B /* LXFPSMonitor.m in Sources */,
 				C7E6DDB9256B4143007E95F5 /* LXCrash_UserException.c in Sources */,
+				2D85A42A28AB744A0077449B /* LXGPUMonitor.m in Sources */,
 				C7E6DD8E256B4142007E95F5 /* LXCPUMonitor.m in Sources */,
 				C7E6DDA2256B4142007E95F5 /* LXCPUInfo.m in Sources */,
+				2D38AF3628B1F41100D87F7E /* LXUICPUMonitor.m in Sources */,
 				C7E6DDB5256B4143007E95F5 /* LXSignalInfo.c in Sources */,
 				C7E6DDA8256B4143007E95F5 /* LXDiskInfo.m in Sources */,
+				2DD0A61328B1E240008FFCBA /* LXUIMonitor.m in Sources */,
+				2D38AF4A28B2943100D87F7E /* LXUIMEMMonitor.m in Sources */,
 				C7E6DD9D256B4142007E95F5 /* LXDeviceInfo.m in Sources */,
+				2D1203B328B1EF5D001B26BB /* LXCurveChartView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -931,14 +1077,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = VYDC264HUJ;
+				DEVELOPMENT_TEAM = RSVX24Q55D;
 				INFOPLIST_FILE = Demo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.bn.Demo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bnx.Demo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -951,14 +1097,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = VYDC264HUJ;
+				DEVELOPMENT_TEAM = RSVX24Q55D;
 				INFOPLIST_FILE = Demo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.bn.Demo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.bnx.Demo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1094,7 +1240,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1150,7 +1296,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -1166,7 +1312,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = VYDC264HUJ;
+				DEVELOPMENT_TEAM = RSVX24Q55D;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -1190,7 +1336,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = VYDC264HUJ;
+				DEVELOPMENT_TEAM = RSVX24Q55D;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";

@@ -8,14 +8,14 @@
 #import "LXCrash.h"
 #import <YYModel/YYModel.h>
 #import "LXSystem.h"
-#import "LXPTools.h"
+#import "LXToolsBox.h"
 
 @implementation LXCrash
 
 - (instancetype)init{
     self = [super init];
     if (self) {
-        self.uuid = [LXPTools createUUID];
+        self.uuid = [LXToolsBox createUUID];
         self.sysVersion = [LXDeviceInfo systemVersion];
         self.machineName = [LXDeviceInfo machine];
         
@@ -23,7 +23,7 @@
         self.diskUsage = [LXDiskInfo usedDiskSpace:YES];
         
         self.memTotal = [NSString stringWithFormat:@"%0.2fGB",[LXMemoryInfo totalMemory]/1024];
-        self.memUsage = [NSString stringWithFormat:@"%0.2f%%",[LXMemoryInfo usedMemory:YES]];
+        self.memUsage = [NSString stringWithFormat:@"%0.2f%%",[LXMemoryInfo usedMemory]];
         
         self.app = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleName"];
         self.version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];

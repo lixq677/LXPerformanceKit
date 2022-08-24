@@ -7,11 +7,11 @@
 
 #import "LXLag.h"
 #import <YYModel/YYModel.h>
-#import "LXPTools.h"
+#import "LXToolsBox.h"
 #import <YYCache/YYCache.h>
 #include <mach-o/dyld.h>
 #import <execinfo.h>
-#import "LXBacktraceLogger.h"
+#import "LXBacktrace.h"
 #import "LXDiskInfo.h"
 #import "LXDeviceInfo.h"
 #import "LXMemoryInfo.h"
@@ -22,7 +22,7 @@
 - (instancetype)init{
     self = [super init];
     if (self) {
-        self.uuid = [LXPTools createUUID];
+        self.uuid = [LXToolsBox createUUID];
         self.createTime = @([[NSDate date] timeIntervalSince1970]);
         self.sysVersion = [LXDeviceInfo systemVersion];
         self.machineName = [LXDeviceInfo machine];
@@ -31,7 +31,7 @@
         self.diskUsage = [LXDiskInfo usedDiskSpace:YES];
         
         self.memTotal = [NSString stringWithFormat:@"%0.2fGB",[LXMemoryInfo totalMemory]/1024];
-        self.memUsage = [NSString stringWithFormat:@"%0.2f%%",[LXMemoryInfo usedMemory:YES]];
+        self.memUsage = [NSString stringWithFormat:@"%0.2f%%",[LXMemoryInfo usedMemory]];
         
         self.app = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleName"];
         self.version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];

@@ -5,7 +5,7 @@
 //  Created by 李笑清 on 2020/11/17.
 //
 
-#import "LXBacktraceLogger.h"
+#import "LXBacktrace.h"
 #import <mach/mach.h>
 #include <dlfcn.h>
 #include <pthread.h>
@@ -14,6 +14,8 @@
 #include <string.h>
 #include <mach-o/dyld.h>
 #include <mach-o/nlist.h>
+#import <dlfcn.h>
+#import <execinfo.h>
 
 #pragma -mark DEFINE MACRO FOR DIFFERENT CPU ARCHITECTURE
 #if defined(__arm64__)
@@ -23,6 +25,7 @@
 #define LX_FRAME_POINTER __fp
 #define LX_STACK_POINTER __sp
 #define LX_INSTRUCTION_ADDRESS __pc
+#define MY_SEGMENT_CMD_TYPE LC_SEGMENT_64
 
 #elif defined(__arm__)
 #define DETAG_INSTRUCTION_ADDRESS(A) ((A) & ~(1UL))
@@ -31,6 +34,7 @@
 #define LX_FRAME_POINTER __r[7]
 #define LX_STACK_POINTER __sp
 #define LX_INSTRUCTION_ADDRESS __pc
+#define MY_SEGMENT_CMD_TYPE LC_SEGMENT
 
 #elif defined(__x86_64__)
 #define DETAG_INSTRUCTION_ADDRESS(A) (A)
@@ -39,6 +43,7 @@
 #define LX_FRAME_POINTER __rbp
 #define LX_STACK_POINTER __rsp
 #define LX_INSTRUCTION_ADDRESS __rip
+#define MY_SEGMENT_CMD_TYPE LC_SEGMENT_64
 
 #elif defined(__i386__)
 #define DETAG_INSTRUCTION_ADDRESS(A) (A)
@@ -47,8 +52,10 @@
 #define LX_FRAME_POINTER __ebp
 #define LX_STACK_POINTER __esp
 #define LX_INSTRUCTION_ADDRESS __eip
+#define MY_SEGMENT_CMD_TYPE LC_SEGMENT
 
 #endif
+
 
 #define CALL_INSTRUCTION_FROM_RETURN_ADDRESS(A) (DETAG_INSTRUCTION_ADDRESS((A)) - 1)
 
@@ -57,10 +64,14 @@
 #define POINTER_FMT       "0x%016lx"
 #define POINTER_SHORT_FMT "0x%lx"
 #define LX_NLIST struct nlist_64
+typedef struct mach_header_64 mach_header_t;
+typedef struct segment_command_64 segment_command_t;
 #else
 #define TRACE_FMT         "%-4d%-31s 0x%08lx %s + %lu"
 #define POINTER_FMT       "0x%08lx"
 #define POINTER_SHORT_FMT "0x%lx"
+typedef struct mach_header mach_header_t;
+typedef struct segment_command segment_command_t;
 #define LX_NLIST struct nlist
 #endif
 
@@ -75,39 +86,176 @@ __attribute__((constructor)) static void CrashMonitor_Initializer(void){
     main_thread_id = mach_thread_self();
 }
 
-@implementation LXBacktraceLogger
+struct LXSG_Info{
+    const char* name;
+    long loadAddr;
+    long beginAddr;
+    long endAddr;
+};
 
-#pragma -mark Implementation of interface
-+ (NSString *)backtraceOfNSThread:(NSThread *)thread {
-    return _lx_backtraceOfThread(lx_machThreadFromNSThread(thread));
+@implementation LXBacktrace
+
++ (NSString *)backtraceNSThread:(NSThread *)thread{
+    thread_t th = lx_machThreadFromNSThread(thread);
+    NSArray<NSString *> *array = lx_baseAddressInfo();
+    NSString *it = _lx_backtraceOfThread(th);
+    NSMutableArray *stack = [NSMutableArray arrayWithArray:array];
+    if (it.length > 0) {
+        [stack addObject:it];
+    }
+    NSString *log = [stack componentsJoinedByString:@"\n"];
+    return log;
 }
 
-+ (NSString *)backtraceOfCurrentThread {
-    return [self backtraceOfNSThread:[NSThread currentThread]];
++ (NSString *)backtraceCurrentThread{
+    NSArray<NSString *> *array = lx_baseAddressInfo();
+    NSString *it = [self backtraceNSThread:[NSThread currentThread]];
+    NSMutableArray *stack = [NSMutableArray arrayWithArray:array];
+    if (it.length > 0) {
+        [stack addObject:it];
+    }
+    NSString *log = [stack componentsJoinedByString:@"\n"];
+    return log;
 }
 
-+ (NSString *)backtraceOfMainThread {
-    return [self backtraceOfNSThread:[NSThread mainThread]];
++ (NSString *)backtraceMainThread{
+    NSArray<NSString *> *array = lx_baseAddressInfo();
+    NSString *it = [self backtraceNSThread:[NSThread mainThread]];
+    NSMutableArray *stack = [NSMutableArray arrayWithArray:array];
+    if (it.length > 0) {
+        [stack addObject:it];
+    }
+    NSString *log = [stack componentsJoinedByString:@"\n"];
+    return log;
 }
 
-+ (NSString *)backtraceOfAllThread {
++ (NSString *)backtraceAllThread{//获取所有线程信息
     thread_act_array_t threads;
     mach_msg_type_number_t thread_count = 0;
     const task_t this_task = mach_task_self();
-    
     kern_return_t kr = task_threads(this_task, &threads, &thread_count);
     if(kr != KERN_SUCCESS) {
-        return @"Fail to get information of all threads";
+        return nil;
     }
     
     NSMutableString *resultString = [NSMutableString stringWithFormat:@"Call Backtrace of %u threads:\n", thread_count];
     for(int i = 0; i < thread_count; i++) {
-        [resultString appendString:_lx_backtraceOfThread(threads[i])];
+        NSString *info = _lx_backtraceOfThread(threads[i]);
+        if (info) {
+            [resultString appendString:info];
+        }
     }
-    return [resultString copy];
+    NSArray<NSString *> *array = lx_baseAddressInfo();
+    NSMutableArray *stack = [NSMutableArray arrayWithArray:array];
+    [stack addObject:resultString];
+    NSString *log = [stack componentsJoinedByString:@"\n"];
+    return log;
+}
+
++ (NSString *)backtraceStacksAndSymbol{
+    NSArray<NSString *> *array = lx_baseAddressInfo();
+    NSString *it = lx_stacksAndSymbol();
+    NSMutableArray *stack = [NSMutableArray arrayWithArray:array];
+    if (it.length > 0) {
+        [stack addObject:it];
+    }
+    NSString *log = [stack componentsJoinedByString:@"\n"];
+    return log;
+}
+
++ (NSString *)backtraceStacksNoSymbol{
+    return lx_stacksNoSymbol();
+}
+
+///转换oc线程为linux 线程
++ (thread_t)machThreadFromNSThread:(NSThread *)nsthread{
+    return lx_machThreadFromNSThread(nsthread);
+}
+
+/// 回溯linux 线程
++ (NSString *)backtraceThread:(thread_t)thread{
+    NSArray<NSString *> *array = lx_baseAddressInfo();
+    NSString *it = _lx_backtraceOfThread(thread);
+    NSMutableArray *stack = [NSMutableArray arrayWithArray:array];
+    if (it.length > 0) {
+        [stack addObject:it];
+    }
+    NSString *log = [stack componentsJoinedByString:@"\n"];
+    return log;
+}
+
++(NSArray *)baseAddressInfo{
+    return lx_baseAddressInfo();
 }
 
 #pragma -mark Get call backtrace of a mach_thread
+
+#define max_stack_depth_sys 64
+NSString *lx_stacksAndSymbol(void){
+    /*追踪栈信息*/
+    NSMutableString *resultString = [[NSMutableString alloc] initWithFormat:@"Backtrace of stacks:\n"];
+    vm_address_t *stacks[max_stack_depth_sys];
+    int depth = backtrace((void**)stacks, max_stack_depth_sys);
+    char **strings = backtrace_symbols((void *)stacks, depth);
+    if (strings == NULL) {
+        return nil;
+    }
+    NSMutableArray<NSString *> *symbols = [NSMutableArray array];
+    for (int j = 0; j < depth; j++) {
+        NSString *s = [[NSString alloc] initWithCString:strings[j] encoding:NSUTF8StringEncoding];
+        [symbols addObject:s];
+    }
+    free(strings);
+    [resultString appendString:[symbols componentsJoinedByString:@"\n"]];
+    
+    return [resultString copy];
+}
+
+NSString *lx_stacksNoSymbol(void){
+    size_t size = 0;
+    uint32_t count = _dyld_image_count();
+    struct LXSG_Info *sinfos = calloc(count, sizeof(struct LXSG_Info));
+    for (uint32_t i = 0; i < count; i++) {
+        const mach_header_t* header = (const mach_header_t*)_dyld_get_image_header(i);
+        const char* name = _dyld_get_image_name(i);
+        const char* tmp = strrchr(name, '/');
+        long slide = _dyld_get_image_vmaddr_slide(i);
+        if (tmp) {
+            name = tmp + 1;
+        }
+        long offset = (long)header + sizeof(mach_header_t);
+        for (unsigned int j = 0; j < header->ncmds; j++) {
+            const segment_command_t *segment = (const segment_command_t *)offset;
+            if (segment->cmd == MY_SEGMENT_CMD_TYPE && strcmp(segment->segname, SEG_TEXT) == 0) {
+                long begin = (long)segment->vmaddr + slide;
+                long end = (long)(begin + segment->vmsize);
+                sinfos[i].name = name;
+                sinfos[i].beginAddr = begin;
+                sinfos[i].endAddr = end;
+                sinfos[i].loadAddr = (long)header;
+                size++;
+                break;
+            }
+            offset += segment->cmdsize;
+        }
+    }
+    
+    NSMutableString *stackInfo = [[NSMutableString alloc] init];
+    vm_address_t *stacks[max_stack_depth_sys];
+    int depth = backtrace((void**)stacks, max_stack_depth_sys);
+    for (int j = 0; j < depth; j++) {
+        vm_address_t addr = (vm_address_t)stacks[j];
+        for (size_t i = 0; i < size; i++){
+            if (addr > sinfos[i].beginAddr && addr < sinfos[i].endAddr) {
+                [stackInfo appendFormat:@"%s 0x%lx 0x%lx\n",(sinfos[i].name != NULL) ? sinfos[i].name : "unknown",sinfos[i].loadAddr,(long)addr];
+            }
+        }
+    }
+    [stackInfo appendFormat:@"\n"];
+    free(sinfos);
+    return [stackInfo copy];
+}
+
 NSString *_lx_backtraceOfThread(thread_t thread) {
     
     uintptr_t backtraceBuffer[50];
@@ -480,7 +628,7 @@ NSString *lx_get_dSYM_UUID(void){
     return nil;
 }
 
-NSArray *lx_baseAddressInfo(){
+NSArray *lx_baseAddressInfo(void){
     NSMutableArray *ret = [NSMutableArray array];
     [ret addObject:[NSString stringWithFormat:@"Base Address:0x%lx",(uintptr_t)lx_get_load_address()]];
     [ret addObject:[NSString stringWithFormat:@"dSYM UUID:%@",lx_get_dSYM_UUID()]];
@@ -488,6 +636,7 @@ NSArray *lx_baseAddressInfo(){
     
     return ret;
 }
+
 
 
 
