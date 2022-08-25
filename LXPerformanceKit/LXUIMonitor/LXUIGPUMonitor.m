@@ -17,6 +17,10 @@
 
 @property (nonatomic,strong)UIWindow *window;
 
+@property (nonatomic,assign)NSUInteger count;
+
+@property (nonatomic,assign)NSUInteger total;
+
 @end
 
 @implementation LXUIGPUMonitor
@@ -34,21 +38,28 @@
     if ([self isMonitor]) return;
     [self.window setHidden:NO];
     [self.window addSubview:self.displayLabel];
-    [[LXGPUMonitor defaultMonitor] startMonitorWithTimeInterval:0.1 handler:^(LXGPUUtilization * _Nonnull GPUUtilization) {
-        NSUInteger gpuUsage = [GPUUtilization deviceUtilization];
-        NSMutableAttributedString *text = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"GPU: %02lu%%",(unsigned long)gpuUsage]];
-        // 根据卡顿程度显示颜色
-        UIColor *color = nil;
-        if (gpuUsage < 30) {
-            color = [UIColor greenColor];
-        } else if (gpuUsage < 50 && gpuUsage >= 20) {
-            color = [UIColor purpleColor];
-        } else {
-            color = [UIColor redColor];
+    [[LXGPUMonitor defaultMonitor] startMonitorWithTimeInterval:0.01 handler:^(LXGPUUtilization * _Nonnull GPUUtilization) {
+        NSUInteger usage = [GPUUtilization deviceUtilization];
+        if (self.count == 50) {
+            NSUInteger gpuUsage = self.total/50;
+            NSMutableAttributedString *text = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"GPU: %02lu%%",(unsigned long)gpuUsage]];
+            // 根据卡顿程度显示颜色
+            UIColor *color = nil;
+            if (gpuUsage < 30) {
+                color = [UIColor greenColor];
+            } else if (gpuUsage < 50 && gpuUsage >= 20) {
+                color = [UIColor purpleColor];
+            } else {
+                color = [UIColor redColor];
+            }
+            [text addAttribute:NSForegroundColorAttributeName value:[UIColor blueColor] range:NSMakeRange(0, 4)];
+            [text addAttribute:NSForegroundColorAttributeName value:color range:NSMakeRange(4, text.length-4)];
+            self.displayLabel.attributedText = text;
+            self.count = 0;
+            self.total = 0;
         }
-        [text addAttribute:NSForegroundColorAttributeName value:[UIColor blueColor] range:NSMakeRange(0, 4)];
-        [text addAttribute:NSForegroundColorAttributeName value:color range:NSMakeRange(4, text.length-4)];
-        self.displayLabel.attributedText = text;
+        self.count++;
+        self.total += usage;
     }];
 }
 
