@@ -48,7 +48,7 @@
     [[LXMEMMonitor defaultMonitor] startMemorySizeMonitorWithTimeInterval:0.5 handler:^(LXMemoryInfo * _Nonnull memory) {
         __strong typeof(weakSelf) self = weakSelf;
         dispatch_async(dispatch_get_main_queue(), ^{
-            double memoryUsage = memory.appUsedMemory;
+            double memoryUsage = memory.appPhysFootprintMemory;
             self.waveView.progress = memoryUsage/[memory totalMemory];
             self.waveView.title = [NSString stringWithFormat:@"%.2f\nMb",memoryUsage];
         });
