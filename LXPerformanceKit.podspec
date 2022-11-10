@@ -9,7 +9,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'LXPerformanceKit'
-  s.version          = '0.0.7'
+  s.version          = '0.0.10'
   s.summary          = 'A short description of LXPerformanceKit.'
 
 # This description is used to generate tags and improve search results.
@@ -35,6 +35,8 @@ TODO: Add long description of the pod here.
   s.pod_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
   s.xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
   s.requires_arc = true
+  s.static_framework = true
+  s.libraries = "z", "resolv.9","c++"
   # s.resource_bundles = {
   #   'LXNetworkKit' => ['LXNetworkKit/Assets/*.png']
   # }

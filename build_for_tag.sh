@@ -63,7 +63,10 @@ if [ $? -ne 0 ]; then
 fi
 echo "远程验证成功"
 
-pod repo push bngrp-retailer-newapp-bniosprojects-bnspecs-bnspec LXPerformanceKit.podspec --allow-warnings --sources="http://git.bngrp.com/retailer-newapp/BNIosProjects/BNSpecs/bnspec.git,https://github.com/CocoaPods/Specs.git"
+
+pod trunk push LXPerformanceKit.podspec --allow-warnings
+
+#pod repo push bngrp-retailer-newapp-bniosprojects-bnspecs-bnspec LXPerformanceKit.podspec --allow-warnings --sources="http://git.bngrp.com/retailer-newapp/BNIosProjects/BNSpecs/bnspec.git,https://github.com/CocoaPods/Specs.git"
 if [ $? -ne 0 ]; then
     echo "入库失败"
     exit
