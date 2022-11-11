@@ -9,7 +9,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'LXPerformanceKit'
-  s.version          = '0.0.11'
+  s.version          = '0.0.12'
   s.summary          = 'A short description of LXPerformanceKit.'
 
 # This description is used to generate tags and improve search results.
@@ -35,7 +35,7 @@ TODO: Add long description of the pod here.
   s.pod_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
   s.xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
   s.requires_arc = true
-  #s.static_framework = true
+  s.static_framework = true
   s.libraries = "z", "resolv.9","c++"
   # s.resource_bundles = {
   #   'LXNetworkKit' => ['LXNetworkKit/Assets/*.png']
@@ -90,7 +90,7 @@ TODO: Add long description of the pod here.
     end
     s.subspec 'LXUIMonitor' do |jj|
         jj.source_files = "LXPerformanceKit/LXUIMonitor/*.{h,m,mm,c}","LXPerformanceKit/LXUIMonitor/**/*.{h,m,mm,c}"
-        jj.resources = "LXPerformanceKit/LXUIMonitor/*.xcassets","LXPerformanceKit/LXUIMonitor/*.png"
+        #jj.resources = "LXPerformanceKit/LXUIMonitor/*.xcassets","LXPerformanceKit/LXUIMonitor/*.png"
         jj.dependency  "LXPerformanceKit/LXSystem"
         jj.dependency  "LXPerformanceKit/LXGPUMonitor"
         jj.dependency  "LXPerformanceKit/LXFPSMonitor"
