@@ -9,7 +9,7 @@ target 'LXPerformanceKit' do
 
 # pod "CXLogKit"
   pod "YYModel"
-  pod "YYCache"
+#  pod "YYCache"
   pod "libextobjc"
 
   # Pods for LXPerformanceKit

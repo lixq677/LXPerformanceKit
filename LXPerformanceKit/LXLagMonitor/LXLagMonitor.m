@@ -10,7 +10,6 @@
 #import <libkern/OSAtomic.h>
 #import <execinfo.h>
 #import "LXBacktrace.h"
-#import <YYCache/YYCache.h>
 #import <libextobjc/extobjc.h>
 
 @interface LXLagMonitor (){
@@ -21,10 +20,6 @@
     dispatch_semaphore_t _dispatchSemaphore;
     CFRunLoopActivity _runLoopActivity;
 }
-
-@property (nonatomic, copy)YYDiskCache *diskCache;
-
-@property (nonatomic, strong)NSMutableSet<NSString *> *allKeys;
 
 @property (nonatomic,copy)void(^reportBlock)(LXLag *lagInfo);
 
@@ -127,21 +122,6 @@ static void _runLoopObserverCallBack(CFRunLoopObserverRef observer, CFRunLoopAct
     dispatch_semaphore_signal(semaphore);
 }
 
-- (void)deleteReports{
-    [self.diskCache removeAllObjects];
-}
-
-- (NSArray<LXLag *> *)lagReports{
-    NSMutableArray *reports = [NSMutableArray array];
-    [self.allKeys enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, BOOL * _Nonnull stop) {
-        id item = [self.diskCache objectForKey:obj];
-        if ([item isKindOfClass:[LXLag class]]) {
-            [reports addObject:item];
-        }
-    }];
-    return reports;
-}
-
 #pragma mark - private methods
 
 - (void)generateLagReportWithLag:(LXLag *)lagInfo{
@@ -154,38 +134,14 @@ static void _runLoopObserverCallBack(CFRunLoopObserverRef observer, CFRunLoopAct
         lagDegree = LXLagDegreeSlight;
     }
     lagInfo.lagDegree = lagDegree;
-    @weakify(self);
-    [self.diskCache setObject:lagInfo forKey:lagInfo.uuid withBlock:^(){
-        @strongify(self);
-        if (self.reportBlock) {
-            if ([NSThread isMainThread]) {
+    if (self.reportBlock) {
+        if ([NSThread isMainThread]) {
+            self.reportBlock(lagInfo);
+        }else{
+            dispatch_async(dispatch_get_main_queue(), ^{
                 self.reportBlock(lagInfo);
-            }else{
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    self.reportBlock(lagInfo);
-                });
-            }
+            });
         }
-    }];
-
-}
-
-
-- (YYDiskCache *)diskCache{
-    if (!_diskCache) {
-        NSString *cacheFolder = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) firstObject];
-        NSString *path = [cacheFolder stringByAppendingPathComponent:@"lx.cache.performance.lag"];
-        _diskCache = [[YYDiskCache alloc] initWithPath:path];
     }
-    return _diskCache;
 }
-
-- (NSMutableSet<NSString *> *)allKeys{
-    if (!_allKeys) {
-        _allKeys = [NSMutableSet set];
-    }
-    return _allKeys;
-}
-
-
 @end

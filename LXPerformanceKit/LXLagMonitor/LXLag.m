@@ -8,7 +8,6 @@
 #import "LXLag.h"
 #import <YYModel/YYModel.h>
 #import "LXToolsBox.h"
-#import <YYCache/YYCache.h>
 #include <mach-o/dyld.h>
 #import <execinfo.h>
 #import "LXBacktrace.h"

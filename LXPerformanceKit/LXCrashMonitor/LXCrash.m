@@ -73,7 +73,10 @@
             self.reason = [NSString stringWithUTF8String:symbol];
         }
         
-        NSString *t_symbol = [NSString stringWithCString:symbol encoding:NSUTF8StringEncoding];
+        NSString *t_symbol = nil;
+        if(symbol){
+            t_symbol = [NSString stringWithCString:symbol encoding:NSUTF8StringEncoding];
+        }
         
         self.symbol = t_symbol.length > 0 ? t_symbol : @"none";
         

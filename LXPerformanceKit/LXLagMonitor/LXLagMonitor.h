@@ -12,9 +12,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface LXLagMonitor : NSObject
 
-
-@property (nonatomic, readonly) NSArray<LXLag *> *lagReports;
-
 + (instancetype)defaultMonitor;
 
 //开始监控
@@ -22,9 +19,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 //停止监控
 - (void)stopMonitor;
-
-- (void)deleteReports;
-
 
 @end
 

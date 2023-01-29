@@ -98,10 +98,10 @@
         [self showLag:lagInfo];
     }];
     
-//    [[LXCrashMonitor defaultMonitor] startMonitorWithTypes:LXCrashTypeAll reportBlock:^(LXCrash * _Nonnull crashInfo) {
-//        NSLog(@"崩溃发生了：%@",crashInfo.description);
-//        [self showCrash:crashInfo];
-//    }];
+    [[LXCrashMonitor defaultMonitor] startMonitorWithTypes:LXCrashTypeAll reportBlock:^(LXCrash * _Nonnull crashInfo) {
+        NSLog(@"崩溃发生了：%@",crashInfo.description);
+        [self showCrash:crashInfo];
+    }];
     
 }
 

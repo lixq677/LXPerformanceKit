@@ -7,7 +7,6 @@
 
 #import "LXCrashMonitor.h"
 #import "LXStackTracer.h"
-#import <YYCache/YYCache.h>
 #include "LXCrashEntryContext.h"
 #include "LXSignalInfo.h"
 #include "LXMach.h"
@@ -17,10 +16,6 @@
 #import "LXCrash_UserException.h"
 
 @interface LXCrashMonitor ()
-
-@property (nonatomic, copy) YYDiskCache *diskCache;
-
-@property (nonatomic, strong)NSMutableSet<NSString *> *allKeys;
 
 @property (nonatomic,copy)void(^reportBlock)(LXCrash *crashInfo);
 
@@ -173,33 +168,15 @@ void lxcrash_onCrash(void){
     }
 }
 
-- (void)deleteReport{
-    [self.diskCache removeAllObjects];
-}
-
-- (NSArray<LXCrash *> *)crashReports{
-    NSMutableArray *reports = [NSMutableArray array];
-    [self.allKeys enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, BOOL * _Nonnull stop) {
-        id item = [self.diskCache objectForKey:obj];
-        if ([item isKindOfClass:[LXCrash class]]) {
-            [reports addObject:item];
-        }
-    }];
-    return reports;
-}
 
 - (void)writeCrashReport:(LXCrash *)crash{
     if (crash.uuid) {
-        [self.allKeys addObject:crash.uuid];
-        [self.diskCache setObject:crash forKey:crash.uuid];
-        if (self.reportBlock) {
-            if ([NSThread isMainThread]) {
+        if ([NSThread isMainThread]) {
+            self.reportBlock(crash);
+        }else{
+            dispatch_async(dispatch_get_main_queue(), ^{
                 self.reportBlock(crash);
-            }else{
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    self.reportBlock(crash);
-                });
-            }
+            });
         }
     }
 }
@@ -211,25 +188,5 @@ void lxcrash_onCrash(void){
            terminateProgram:(BOOL)terminateProgram{
     lxcrash_reportUserException([name UTF8String], [reason UTF8String], NULL, [details UTF8String], [details length], [@(terminateProgram) boolValue]);
 }
-
-
-#pragma mark getters and setters
-
-- (YYDiskCache *)diskCache{
-    if (!_diskCache) {
-        NSString *cacheFolder = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) firstObject];
-        NSString *path = [cacheFolder stringByAppendingPathComponent:@"lx.cache.performance.crash"];
-        _diskCache = [[YYDiskCache alloc] initWithPath:path];
-    }
-    return _diskCache;
-}
-
-- (NSMutableSet<NSString *> *)allKeys{
-    if (!_allKeys) {
-        _allKeys = [NSMutableSet set];
-    }
-    return _allKeys;
-}
-
 
 @end

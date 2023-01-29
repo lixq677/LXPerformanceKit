@@ -9,7 +9,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'LXPerformanceKit'
-  s.version          = '0.0.12'
+  s.version          = '0.0.13'
   s.summary          = 'A short description of LXPerformanceKit.'
 
 # This description is used to generate tags and improve search results.
@@ -64,14 +64,12 @@ TODO: Add long description of the pod here.
         dd.source_files = "LXPerformanceKit/LXLagMonitor/*.{h,m}","LXPerformanceKit/LXLagMonitor/**/*.{h,m}"
         dd.dependency  "LXPerformanceKit/LXSystem"
         dd.dependency  "LXPerformanceKit/LXTools"
-        dd.dependency 'YYCache'
     end
         
     s.subspec 'LXCrashMonitor' do |ee|
         ee.source_files = "LXPerformanceKit/LXCrashMonitor/*.{h,m,mm,c}","LXPerformanceKit/LXCrashMonitor/**/*.{h,m,mm,c}"
         ee.dependency  "LXPerformanceKit/LXSystem"
         ee.dependency  "LXPerformanceKit/LXTools"
-        ee.dependency 'YYCache'
     end
     
     s.subspec 'LXGPUMonitor' do |ff|

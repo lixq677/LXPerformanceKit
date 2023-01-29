@@ -31,6 +31,7 @@
 		2D85A43128AB97540077449B /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D85A43028AB97540077449B /* IOKit.framework */; };
 		2D85A43528ABA2BF0077449B /* LXMEMMonitor.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D85A43328ABA2BF0077449B /* LXMEMMonitor.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2D85A43628ABA2BF0077449B /* LXMEMMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D85A43428ABA2BF0077449B /* LXMEMMonitor.m */; };
+		2DB332842984D15A00F0A9D0 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DB332832984D15900F0A9D0 /* IOKit.framework */; };
 		2DD0A61228B1E240008FFCBA /* LXUIMonitor.h in Headers */ = {isa = PBXBuildFile; fileRef = 2DD0A61028B1E240008FFCBA /* LXUIMonitor.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2DD0A61328B1E240008FFCBA /* LXUIMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DD0A61128B1E240008FFCBA /* LXUIMonitor.m */; };
 		2DD0A61828B1E81C008FFCBA /* LXWaveView.h in Headers */ = {isa = PBXBuildFile; fileRef = 2DD0A61628B1E81C008FFCBA /* LXWaveView.h */; };
@@ -47,7 +48,6 @@
 		C723C0EE256E5BD20088A297 /* DemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C723C0ED256E5BD20088A297 /* DemoTests.m */; };
 		C723C0F9256E5BD30088A297 /* DemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = C723C0F8256E5BD30088A297 /* DemoUITests.m */; };
 		C7C28B2A2571769700C00B61 /* LXPerformanceKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7E6DD2C256B3FE2007E95F5 /* LXPerformanceKit.framework */; settings = {ATTRIBUTES = (Required, ); }; };
-		C7C28B2B2571769700C00B61 /* LXPerformanceKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C7E6DD2C256B3FE2007E95F5 /* LXPerformanceKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C7E6DD36256B3FE3007E95F5 /* LXPerformanceKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7E6DD2C256B3FE2007E95F5 /* LXPerformanceKit.framework */; };
 		C7E6DD3B256B3FE3007E95F5 /* LXPerformanceKitTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C7E6DD3A256B3FE3007E95F5 /* LXPerformanceKitTests.m */; };
 		C7E6DD3D256B3FE3007E95F5 /* LXPerformanceKit.h in Headers */ = {isa = PBXBuildFile; fileRef = C7E6DD2F256B3FE2007E95F5 /* LXPerformanceKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -141,20 +141,6 @@
 		};
 /* End PBXContainerItemProxy section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		C7C28B2C2571769700C00B61 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				C7C28B2B2571769700C00B61 /* LXPerformanceKit.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
 		25E995CD6A21CAF684976A76 /* Pods_LXPerformanceKit_LXPerformanceKitTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LXPerformanceKit_LXPerformanceKitTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D1203B028B1EF5D001B26BB /* LXCurveChartView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LXCurveChartView.h; sourceTree = "<group>"; };
@@ -181,6 +167,7 @@
 		2D85A43028AB97540077449B /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.3.sdk/System/Library/Frameworks/IOKit.framework; sourceTree = DEVELOPER_DIR; };
 		2D85A43328ABA2BF0077449B /* LXMEMMonitor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LXMEMMonitor.h; sourceTree = "<group>"; };
 		2D85A43428ABA2BF0077449B /* LXMEMMonitor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LXMEMMonitor.m; sourceTree = "<group>"; };
+		2DB332832984D15900F0A9D0 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		2DD0A61028B1E240008FFCBA /* LXUIMonitor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LXUIMonitor.h; sourceTree = "<group>"; };
 		2DD0A61128B1E240008FFCBA /* LXUIMonitor.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LXUIMonitor.m; sourceTree = "<group>"; };
 		2DD0A61628B1E81C008FFCBA /* LXWaveView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LXWaveView.h; sourceTree = "<group>"; };
@@ -290,6 +277,7 @@
 			files = (
 				C7C28B2A2571769700C00B61 /* LXPerformanceKit.framework in Frameworks */,
 				EB12CD05A2422459B04651CF /* Pods_Demo.framework in Frameworks */,
+				2DB332842984D15A00F0A9D0 /* IOKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -388,6 +376,7 @@
 			isa = PBXGroup;
 			children = (
 				2D85A43028AB97540077449B /* IOKit.framework */,
+				2DB332832984D15900F0A9D0 /* IOKit.framework */,
 				35DAD71C63F1237993C1464D /* Pods_LXPerformanceKit.framework */,
 				25E995CD6A21CAF684976A76 /* Pods_LXPerformanceKit_LXPerformanceKitTests.framework */,
 				9F9148BE65F6A76EA1B29184 /* Pods_Demo.framework */,
@@ -662,7 +651,6 @@
 				C723C0CB256E5BCF0088A297 /* Sources */,
 				C723C0CC256E5BCF0088A297 /* Frameworks */,
 				C723C0CD256E5BCF0088A297 /* Resources */,
-				C7C28B2C2571769700C00B61 /* Embed Frameworks */,
 				00BB0EB24318658E45DC63AE /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
@@ -1084,7 +1072,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.bnx.Demo;
+				OTHER_CODE_SIGN_FLAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = com.lxq.Demo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1104,7 +1093,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.bnx.Demo;
+				OTHER_CODE_SIGN_FLAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = com.lxq.Demo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

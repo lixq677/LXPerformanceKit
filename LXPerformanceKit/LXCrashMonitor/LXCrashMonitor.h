@@ -23,10 +23,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)stopMonitor;
 
-- (void)deleteReport;
-
-- (NSArray<LXCrash *> *)crashReports;
-
 /**
  主动写入崩溃日志
 
