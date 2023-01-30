@@ -9,6 +9,7 @@
 #import <YYModel/YYModel.h>
 #import "LXSystem.h"
 #import "LXToolsBox.h"
+#import "LXBacktrace.h"
 
 @implementation LXCrash
 
@@ -28,6 +29,9 @@
         self.app = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleName"];
         self.version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
         self.time = [[NSDate date] descriptionWithLocale:[NSLocale currentLocale]];
+        NSString *baseInfo = [[LXBacktrace baseAddressInfo] componentsJoinedByString:@"\n"];
+        NSNumber *mainThread = @([LXBacktrace machThreadFromNSThread:[NSThread mainThread]]);
+        self.baseInfo = [baseInfo stringByAppendingFormat:@"\n主线程:%@",mainThread];
     }
     
     return self;
@@ -53,13 +57,13 @@
                            /*,exception.callStackReturnAddresses*/];
         }
         
-        self.stack = trace;
+        self.crashStack = trace;
     }
     
     return self;
 }
 
-- (instancetype)initWithName:(const char *)name reason:(const char *)reason stack:(NSArray *)stack symbol:(const char *)symbol{
+- (instancetype)initWithName:(const char *)name reason:(const char *)reason crashStack:(NSArray *)stack symbol:(const char *)symbol{
     self = [self init];
     if (self) {
         if (name) {
@@ -81,7 +85,7 @@
         self.symbol = t_symbol.length > 0 ? t_symbol : @"none";
         
         if ([stack count]>0) {
-            self.stack = [stack componentsJoinedByString:@"\n"];
+            self.crashStack = [stack componentsJoinedByString:@"\n"];
         }
     }
     

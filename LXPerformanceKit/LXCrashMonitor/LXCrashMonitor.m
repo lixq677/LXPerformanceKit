@@ -32,9 +32,6 @@ NSArray *genCrashStack(void){
         
         char **strings = backtrace_symbols((void *)g_crashContext.stackTrace, (int)g_crashContext.stackTraceLength);
         NSMutableArray *ret = [NSMutableArray arrayWithCapacity:g_crashContext.stackTraceLength];
-        
-        [ret addObjectsFromArray:[LXBacktrace baseAddressInfo]];
-        
         for (int i = 0; i < g_crashContext.stackTraceLength; ++i)
             [ret addObject:@(strings[i])];
         
@@ -53,7 +50,7 @@ void lxcrash_onCrash(void){
     LXCrash *crashInfo = nil;
     switch (g_crashContext.crashType) {
         case LXCrashTypeNSException:
-            crashInfo = [[LXCrash alloc] initWithName:g_crashContext.NSException.name reason:g_crashContext.crashReason stack:genCrashStack() symbol:g_crashContext.NSException.callStackSymbols];
+            crashInfo = [[LXCrash alloc] initWithName:g_crashContext.NSException.name reason:g_crashContext.crashReason crashStack:genCrashStack() symbol:g_crashContext.NSException.callStackSymbols];
             crashInfo.crashType = @"NSException";
             break;
         case LXCrashTypeSignal:{
@@ -66,17 +63,17 @@ void lxcrash_onCrash(void){
             sprintf(symbol,"App crashed due to signal: [%s, %s] at %0lx",
                             sigName, sigCodeName, g_crashContext.faultAddress);
             
-            NSMutableArray *stacks = [NSMutableArray arrayWithArray:[LXBacktrace baseAddressInfo]];
-            NSString *mainThreadStack = [LXBacktrace backtraceMainThread];
-            if (mainThreadStack) {
-                [stacks addObject:mainThreadStack];
-            }
-            NSString *currentThreadStack = [LXBacktrace backtraceCurrentThread];
-            if (currentThreadStack) {
-                [stacks addObject:currentThreadStack];
-            }
+//            NSMutableArray *stacks = [NSMutableArray arrayWithArray:[LXBacktrace baseAddressInfo]];
+//            NSString *mainThreadStack = [LXBacktrace backtraceMainThread];
+//            if (mainThreadStack) {
+//                [stacks addObject:mainThreadStack];
+//            }
+//            NSString *currentThreadStack = [LXBacktrace backtraceCurrentThread];
+//            if (currentThreadStack) {
+//                [stacks addObject:currentThreadStack];
+//            }
 
-            crashInfo = [[LXCrash alloc] initWithName:sigCodeName reason:g_crashContext.crashReason stack:stacks symbol:symbol];
+            crashInfo = [[LXCrash alloc] initWithName:sigCodeName reason:g_crashContext.crashReason crashStack:genCrashStack() symbol:symbol];
             crashInfo.crashType = @"SignalException";
         }
             break;
@@ -90,23 +87,23 @@ void lxcrash_onCrash(void){
             sprintf(symbol,"App crashed due to mach exception: [%s: %s] at %0lx",
                             machExceptionName, machCodeName, g_crashContext.faultAddress);
             
-            NSMutableArray *stacks = [NSMutableArray arrayWithArray:[LXBacktrace baseAddressInfo]];
-            NSString *mainThreadStack = [LXBacktrace backtraceMainThread];
-            if (mainThreadStack) {
-                [stacks addObject:mainThreadStack];
-            }
-            NSString *currentThreadStack = [LXBacktrace backtraceCurrentThread];
-            if (currentThreadStack) {
-                [stacks addObject:currentThreadStack];
-            }
+//            NSMutableArray *stacks = [NSMutableArray arrayWithArray:[LXBacktrace baseAddressInfo]];
+//            NSString *mainThreadStack = [LXBacktrace backtraceMainThread];
+//            if (mainThreadStack) {
+//                [stacks addObject:mainThreadStack];
+//            }
+//            NSString *currentThreadStack = [LXBacktrace backtraceCurrentThread];
+//            if (currentThreadStack) {
+//                [stacks addObject:currentThreadStack];
+//            }
             
-            crashInfo = [[LXCrash alloc] initWithName:machExceptionName reason:g_crashContext.crashReason stack:stacks symbol:symbol];
+            crashInfo = [[LXCrash alloc] initWithName:machExceptionName reason:g_crashContext.crashReason crashStack:genCrashStack() symbol:symbol];
             
             crashInfo.crashType = @"MachException";
         }
             break;
         case LXCrashTypeCPPException:{
-            crashInfo = [[LXCrash alloc] initWithName:g_crashContext.CPPException.name reason:g_crashContext.crashReason stack:genCrashStack() symbol:NULL];
+            crashInfo = [[LXCrash alloc] initWithName:g_crashContext.CPPException.name reason:g_crashContext.crashReason crashStack:genCrashStack() symbol:NULL];
             
             crashInfo.crashType = @"CPPException";
         }
@@ -114,13 +111,13 @@ void lxcrash_onCrash(void){
         case LXCrashTypeMainThreadDeadLock:{
             crashInfo = [[LXCrash alloc] initWithName:@"MainThreadDeadLock" reason:@"Main thread deadlocked"];
             
-            crashInfo.stack = [LXBacktrace backtraceMainThread];
+            crashInfo.crashStack = [LXBacktrace backtraceMainThread];
             
             crashInfo.crashType = @"DeadLockException";
         }
             break;
         case LXCrashTypeUserDefined:{
-            crashInfo = [[LXCrash alloc] initWithName:g_crashContext.userException.name reason:g_crashContext.crashReason stack:genCrashStack() symbol:g_crashContext.userException.customStackTrace];
+            crashInfo = [[LXCrash alloc] initWithName:g_crashContext.userException.name reason:g_crashContext.crashReason crashStack:genCrashStack() symbol:g_crashContext.userException.customStackTrace];
             
             crashInfo.crashType = @"UserDefinedException";
         }
@@ -129,7 +126,8 @@ void lxcrash_onCrash(void){
         default:
             break;
     }
-    
+    crashInfo.crashThread = @(g_crashContext.offendingThread);
+    crashInfo.stacks = [LXBacktrace backtraceAllThread];
     [[LXCrashMonitor defaultMonitor] writeCrashReport:crashInfo];
 }
 

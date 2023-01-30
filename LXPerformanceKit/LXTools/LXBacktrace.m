@@ -108,9 +108,9 @@ struct LXSG_Info{
 }
 
 + (NSString *)backtraceCurrentThread{
-    NSArray<NSString *> *array = lx_baseAddressInfo();
+   // NSArray<NSString *> *array = lx_baseAddressInfo();
     NSString *it = [self backtraceNSThread:[NSThread currentThread]];
-    NSMutableArray *stack = [NSMutableArray arrayWithArray:array];
+    NSMutableArray *stack = [NSMutableArray array];
     if (it.length > 0) {
         [stack addObject:it];
     }
@@ -119,9 +119,9 @@ struct LXSG_Info{
 }
 
 + (NSString *)backtraceMainThread{
-    NSArray<NSString *> *array = lx_baseAddressInfo();
+   // NSArray<NSString *> *array = lx_baseAddressInfo();
     NSString *it = [self backtraceNSThread:[NSThread mainThread]];
-    NSMutableArray *stack = [NSMutableArray arrayWithArray:array];
+    NSMutableArray *stack = [NSMutableArray array];
     if (it.length > 0) {
         [stack addObject:it];
     }
@@ -145,17 +145,17 @@ struct LXSG_Info{
             [resultString appendString:info];
         }
     }
-    NSArray<NSString *> *array = lx_baseAddressInfo();
-    NSMutableArray *stack = [NSMutableArray arrayWithArray:array];
+   // NSArray<NSString *> *array = lx_baseAddressInfo();
+    NSMutableArray *stack = [NSMutableArray array];
     [stack addObject:resultString];
     NSString *log = [stack componentsJoinedByString:@"\n"];
     return log;
 }
 
 + (NSString *)backtraceStacksAndSymbol{
-    NSArray<NSString *> *array = lx_baseAddressInfo();
+//    NSArray<NSString *> *array = lx_baseAddressInfo();
     NSString *it = lx_stacksAndSymbol();
-    NSMutableArray *stack = [NSMutableArray arrayWithArray:array];
+    NSMutableArray *stack = [NSMutableArray array];
     if (it.length > 0) {
         [stack addObject:it];
     }

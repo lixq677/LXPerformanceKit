@@ -195,7 +195,7 @@ void lxmach_init(void)
 }
 
 thread_t lxmach_thread_self(){
-    thread_t thread_self = mach_thread_self();
+    mach_port_t thread_self = mach_thread_self();
     mach_port_deallocate(mach_task_self(), thread_self);
     return thread_self;
 }

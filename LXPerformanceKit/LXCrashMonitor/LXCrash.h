@@ -18,8 +18,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *symbol;
 @property (nonatomic, copy) NSDictionary *userInfo;
 @property (nonatomic, copy) NSString  *crashType; //异常类型
-
-@property (nonatomic, copy) NSString *stack; //堆栈信息
+@property (nonatomic, copy) NSNumber *crashThread;//崩溃线程号
+@property (nonatomic, copy) NSString *baseInfo; //堆栈信息
+@property (nonatomic, copy) NSString *crashStack; //堆栈信息
+@property (nonatomic, copy) NSString *stacks;//所有线程的堆栈；
 //@property (nonatomic, copy) NSString *sysLog; //系统日志
 
 @property (nonatomic, copy) NSString *time;
@@ -37,7 +39,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (instancetype)initWithException:(NSException *)exception stackTrace:(NSString *)stack symbol:(NSString *)symbol;
 
-- (instancetype)initWithName:(const char*)name reason:(const char *)reason stack:(NSArray *)stack symbol:(nullable const char*)symbol;
+- (instancetype)initWithName:(const char*)name reason:(const char *)reason crashStack:(NSArray *)stack symbol:(nullable const char*)symbol;
 
 - (instancetype)initWithName:(NSString *)name reason:(NSString *)reason;
 
